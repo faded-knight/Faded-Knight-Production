@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{80B943C5-77AB-577A-339F-5807E635084F}</ProjectGuid>
+    <ProjectGuid>{97A2367B-6D8F-28A1-3ABD-7661A8FD0800}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -64,10 +64,26 @@
     <Compile Include="Assets\Scripts\CoinManagerScript.cs" />
     <Compile Include="Assets\Scripts\CoinScript.cs" />
     <Compile Include="Assets\Scripts\ExitScript.cs" />
+    <Compile Include="Assets\Scripts\Game\ArrowScript.cs" />
+    <Compile Include="Assets\Scripts\Game\CoinManagerScript.cs" />
+    <Compile Include="Assets\Scripts\Game\CoinScript.cs" />
+    <Compile Include="Assets\Scripts\Game\ExitScript.cs" />
+    <Compile Include="Assets\Scripts\Game\IndicatorScript.cs" />
+    <Compile Include="Assets\Scripts\Game\IndicatorSpawnerScript.cs" />
+    <Compile Include="Assets\Scripts\Game\InputHandler.cs" />
+    <Compile Include="Assets\Scripts\Game\LavaScript.cs" />
+    <Compile Include="Assets\Scripts\Game\ParticleScript.cs" />
+    <Compile Include="Assets\Scripts\Game\ScoreUIScript.cs" />
+    <Compile Include="Assets\Scripts\Game\SheepDestroyerScript.cs" />
+    <Compile Include="Assets\Scripts\Game\SheepScript.cs" />
+    <Compile Include="Assets\Scripts\Game\SpawnerScript.cs" />
+    <Compile Include="Assets\Scripts\Game\TrampolineScript.cs" />
+    <Compile Include="Assets\Scripts\Game\WallScript.cs" />
     <Compile Include="Assets\Scripts\IndicatorScript.cs" />
     <Compile Include="Assets\Scripts\IndicatorSpawnerScript.cs" />
     <Compile Include="Assets\Scripts\InputHandler.cs" />
     <Compile Include="Assets\Scripts\LavaScript.cs" />
+    <Compile Include="Assets\Scripts\Menu\MenuManager.cs" />
     <Compile Include="Assets\Scripts\ParticleScript.cs" />
     <Compile Include="Assets\Scripts\ScoreUIScript.cs" />
     <Compile Include="Assets\Scripts\SheepDestroyerScript.cs" />
@@ -75,6 +91,7 @@
     <Compile Include="Assets\Scripts\SpawnerScript.cs" />
     <Compile Include="Assets\Scripts\TrampolineScript.cs" />
     <Compile Include="Assets\Scripts\WallScript.cs" />
+    <None Include="Assets\3rdPartyAssets\DELETE IF USED.txt" />
     <None Include="Assets\Meshes\Menu\DELETE IF USED.txt" />
     <None Include="Assets\Physics\Game\DELETE IF USED.txt" />
     <None Include="Assets\Textures\Menu\Metallic\DELETE IF USED.txt" />
@@ -106,19 +123,19 @@
     <None Include="Assets\Audio\Game\DELETE IF USED.txt" />
     <None Include="Assets\Shaders\DELETE IF USED.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/s170726/Downloads/Trampoline/Trambampoline-master/wew/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/s170726/Desktop/SVN/Faded-Knight-Production.git/trunk/Hypercasual Cooking Game/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/s170726/Downloads/Trampoline/Trambampoline-master/wew/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/Users/s170726/Desktop/SVN/Faded-Knight-Production.git/trunk/Hypercasual Cooking Game/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Users/s170726/Downloads/Trampoline/Trambampoline-master/wew/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>C:/Users/s170726/Desktop/SVN/Faded-Knight-Production.git/trunk/Hypercasual Cooking Game/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/s170726/Downloads/Trampoline/Trambampoline-master/wew/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/s170726/Desktop/SVN/Faded-Knight-Production.git/trunk/Hypercasual Cooking Game/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>C:/Users/s170726/Downloads/Trampoline/Trambampoline-master/wew/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>C:/Users/s170726/Desktop/SVN/Faded-Knight-Production.git/trunk/Hypercasual Cooking Game/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.4f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -322,13 +339,13 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.4f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>C:/Users/s170726/Downloads/Trampoline/Trambampoline-master/wew/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>C:/Users/s170726/Desktop/SVN/Faded-Knight-Production.git/trunk/Hypercasual Cooking Game/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>C:/Users/s170726/Downloads/Trampoline/Trambampoline-master/wew/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/s170726/Desktop/SVN/Faded-Knight-Production.git/trunk/Hypercasual Cooking Game/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>C:/Users/s170726/Downloads/Trampoline/Trambampoline-master/wew/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>C:/Users/s170726/Desktop/SVN/Faded-Knight-Production.git/trunk/Hypercasual Cooking Game/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.4f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
