@@ -4,16 +4,21 @@ using System.Collections;
 
 public class ScoreUIScript : MonoBehaviour {
 
+    //Script References
+    SpawnerScript gameController;
+    
+    //Private Object References
     private Text HighScore;
     private Text CurrentScore;
     private Text Lives;
 
-    private int highScoreValue;
+    //Constant References
     string highScoreKey = "HighScore";
-
-    SpawnerScript gameController;
-
-    int playerCurrentScore;
+    
+    //Private Int Variables
+    private int highScoreValue;
+    [SerializeField]
+    private int playerCurrentScore;
 
     // Use this for initialization
     void Start()
@@ -56,11 +61,9 @@ public class ScoreUIScript : MonoBehaviour {
 
         SetScoreDisplay();
     }
-
-    // Update is called once per frame
-    void Update()
+    void OnDisable()
     {
-        //playerCurrentScore = Mathf.Floor(gameController.gameTime * 100) / 100;
+        SaveHighScore();
     }
 
     public void SaveHighScore()
@@ -69,8 +72,4 @@ public class ScoreUIScript : MonoBehaviour {
         PlayerPrefs.Save();
     }
 
-    void OnDisable()
-    {
-        SaveHighScore();
-    }
 }

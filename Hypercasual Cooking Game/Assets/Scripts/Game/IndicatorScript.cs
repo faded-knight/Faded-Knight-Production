@@ -3,9 +3,11 @@ using System.Collections;
 
 public class IndicatorScript : MonoBehaviour {
 
+    //Object References
     GameObject parentBouncer;
 
-    float topOfScreen;
+    //Private Float References
+    private float topOfScreen;
 
 	// Use this for initialization
 	void Start () {

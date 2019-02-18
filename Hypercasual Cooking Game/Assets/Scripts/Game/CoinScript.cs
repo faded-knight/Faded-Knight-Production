@@ -3,8 +3,10 @@ using System.Collections;
 
 public class CoinScript : MonoBehaviour {
 
+    //Script References
     public CoinManagerScript manager;
-
+    
+    //Private Float Variables
     private float coinLifeTime = 10.0f;
 
 	void Update () {

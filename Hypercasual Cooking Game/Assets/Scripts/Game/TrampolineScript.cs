@@ -3,11 +3,13 @@ using System.Collections;
 
 public class TrampolineScript : MonoBehaviour {
 
+    //Private Vector References
     private Vector2 leftAnchor;
     private Vector2 rightAnchor;
-
-    private float strength;
-
+    
+    private Vector3 initialScale;
+    
+    //Public Float Variables
     [Range (0.1f, 0.5f)]
     public float minimumLength;
 
@@ -17,7 +19,8 @@ public class TrampolineScript : MonoBehaviour {
     [Range (1.0f, 200.0f)]
     public float strengthScalingValue;
 
-    private Vector3 initialScale;
+    //Private Float Variables
+    private float strength;
 
 
 	// Use this for initialization
@@ -76,14 +79,10 @@ public class TrampolineScript : MonoBehaviour {
 
             other.gameObject.GetComponent<Rigidbody2D>().AddForce(collisionNormal * strength);
 
-            GameObject.FindGameObjectWithTag("GameController").GetComponent<InputHandler>().FreeTrampoline();
+            //Deactivates Bool if max trampolines is not reached
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<InputHandler>().trampolinesFull = false;
 
             Destroy(gameObject);
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }

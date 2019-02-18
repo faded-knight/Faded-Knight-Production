@@ -3,6 +3,7 @@ using System.Collections;
 
 public class IndicatorSpawnerScript : MonoBehaviour {
 
+    //Object References
     public GameObject indicatorPrefab;
 
     void OnTriggerEnter2D(Collider2D bouncer)

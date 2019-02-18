@@ -2,18 +2,19 @@
 using System.Collections;
 
 public class ExitScript : MonoBehaviour {
-
+    //Script References
     ScoreUIScript scoreDisplay;
 
-    float scaleY = 0.0f;
-
-    float timer = 0.0f;
-
+    //Public Float Variables
     public float activeTime;
-
-    float lerpTime = 1.0f;
-
     public float loopTime;
+
+    //Private Float Variables
+    private float scaleY = 0.0f;
+    private float timer = 0.0f;
+    private float lerpTime = 1.0f;
+
+
 
 	// Use this for initialization
 	void Start () {

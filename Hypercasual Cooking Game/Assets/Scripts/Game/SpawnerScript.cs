@@ -2,24 +2,30 @@
 using System.Collections;
 
 public class SpawnerScript : MonoBehaviour {
-
-    public float timeBetweenSpawns;
-    private float currentSpawnTimer;
-    public GameObject spawnObject;
-
+    //Script References
     ScoreUIScript scoreScript;
-
     ExitScript exitScript;
-
-    public float gameTime;
-
-    private int DroppedBalls = 0;
-
-    [Range (1, 10)]
-    public int lives;
-
     CoinManagerScript coinManager;
 
+    //Object References
+    public GameObject spawnObject;
+
+    //Public Interactable Floats
+    public float timeBetweenSpawns;
+    public float gameTime;
+
+    //Private Local Floats
+    private float currentSpawnTimer;
+
+    //Public Interactable Ints
+    [Range(1, 10)]
+    public int lives;
+
+    //Private Local Ints
+    [SerializeField]
+    private int droppedBalls = 0;
+
+    //References Objects, sets currentSpawnTimer, sets gameTime
 	void Start () {
         currentSpawnTimer = timeBetweenSpawns;
 
@@ -30,12 +36,12 @@ public class SpawnerScript : MonoBehaviour {
 
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
-        coinManager = GameObject.Find("CoinManager").GetComponent<CoinManagerScript>();
+        coinManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<CoinManagerScript>();
 	}
 	
 	void Update () {
 
-        if (DroppedBalls == lives)
+        if (droppedBalls == lives)
         {
             Reset();
         }
@@ -52,13 +58,13 @@ public class SpawnerScript : MonoBehaviour {
 
     public void DropBall()
     {
-        DroppedBalls++;
+        droppedBalls++;
         scoreScript.SetScoreDisplay();
     }
 
     public int GetLives()
     {
-        return lives - DroppedBalls;
+        return lives - droppedBalls;
     }
 
     public void Reset()
@@ -69,7 +75,7 @@ public class SpawnerScript : MonoBehaviour {
 
         gameTime = 0.0f;
         currentSpawnTimer = timeBetweenSpawns;
-        DroppedBalls = 0;
+        droppedBalls = 0;
 
         exitScript.Reset();
 

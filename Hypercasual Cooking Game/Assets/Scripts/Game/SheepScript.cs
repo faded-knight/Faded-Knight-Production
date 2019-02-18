@@ -2,12 +2,9 @@
 using System.Collections;
 
 public class SheepScript : MonoBehaviour {
-
+    
+    //Public Bools
     public bool falling = true;
-
-	void Start () {
-	
-	}
 
 	void Update () {
 	

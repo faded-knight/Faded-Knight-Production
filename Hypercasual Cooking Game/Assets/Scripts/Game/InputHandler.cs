@@ -3,35 +3,43 @@ using System.Collections;
 
 public class InputHandler : MonoBehaviour {
 
+    //Script References
+    TrampolineScript currentTrampolineScript;
+    
+    //public Object References
+    public GameObject trampolineObject;
+
+    //public bool Variables
+    public bool trampolinesFull = false;
+
+    //private bool Variables
     private bool currentlyDrawing;
 
+    //private Vector2 References
     private Vector2 initialPosition;
     private Vector2 endPosition;
 
-    public GameObject trampolineObject;
-
-    private TrampolineScript currentTrampolineScript;
-
+    //Public Int Variables
     [Range (3, 15)]
     public int maximumTrampolineCount = 5;
 
-    public bool trampolinesFull = false;
 
 	// Use this for initialization
 	void Start () {
+        
 		Application.targetFrameRate = 60;
 
         currentlyDrawing = false;
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        TakeMouseInput();
-        TakeTouchInput();
+	void FixedUpdate () {
+        GameInputManager();
 	}
 
-    void TakeTouchInput()
+    void GameInputManager()
     {
+        //Mobile Touch Input
 		if (Input.touchCount > 0)
 		{
         	if (Input.GetTouch(0).phase == TouchPhase.Began && !currentlyDrawing)
@@ -44,13 +52,11 @@ public class InputHandler : MonoBehaviour {
             }
         	else if (Input.GetTouch(0).phase == TouchPhase.Ended)
         	{
-                FinalizeTrampoline();
+                currentlyDrawing = false;
         	}
 		}
-    }
 
-    void TakeMouseInput()
-    {
+        //Mouse Click Input
         if (Input.GetMouseButtonDown(0) && !currentlyDrawing)
         {
             StartDrawing(Camera.main.ScreenToWorldPoint(Input.mousePosition));
@@ -61,7 +67,7 @@ public class InputHandler : MonoBehaviour {
         }
         else if (Input.GetMouseButtonUp(0))
         {
-            FinalizeTrampoline();
+            currentlyDrawing = false;
         }
     }
 
@@ -86,29 +92,4 @@ public class InputHandler : MonoBehaviour {
     {
         currentTrampolineScript.InitializeDimensions(initialPosition, location);
     }
-
-    void FinalizeTrampoline()
-    {
-        currentlyDrawing = false;
-    }
-
-    public void FreeTrampoline()
-    {
-        trampolinesFull = false;
-    }
-
-    //void SpawnTrampolineObject()
-    //{
-    //    int activeTrampolines = GameObject.FindGameObjectsWithTag("Trampoline").Length;
-
-    //    if (activeTrampolines < maximumTrampolineCount)
-    //    {
-    //        if (Vector2.Distance(initialPosition, endPosition) > minimumTrampolineSize)
-    //        {
-    //            GameObject tramp = (GameObject)Instantiate(trampolineObject);
-    //            tramp.GetComponent<TrampolineScript>().InitializeDimensions(initialPosition, endPosition);
-    //        }
-    //    }
-       
-    //}
 }
