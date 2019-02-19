@@ -14,6 +14,7 @@ public class InputHandler : MonoBehaviour {
 
     //private bool Variables
     private bool currentlyDrawing;
+    public bool breakableTrampolines;
 
     //private Vector2 References
     private Vector2 initialPosition;

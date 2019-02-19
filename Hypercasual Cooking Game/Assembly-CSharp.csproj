@@ -60,16 +60,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\RippleEffect\RippleEffect.cs" />
     <Compile Include="Assets\Scripts\Game\ArrowScript.cs" />
-    <Compile Include="Assets\Scripts\Game\CoinManagerScript.cs" />
-    <Compile Include="Assets\Scripts\Game\CoinScript.cs" />
     <Compile Include="Assets\Scripts\Game\ExitScript.cs" />
     <Compile Include="Assets\Scripts\Game\IndicatorScript.cs" />
     <Compile Include="Assets\Scripts\Game\IndicatorSpawnerScript.cs" />
     <Compile Include="Assets\Scripts\Game\InputHandler.cs" />
     <Compile Include="Assets\Scripts\Game\LavaScript.cs" />
     <Compile Include="Assets\Scripts\Game\ParticleScript.cs" />
+    <Compile Include="Assets\Scripts\Game\RecipesScript.cs" />
     <Compile Include="Assets\Scripts\Game\ScoreUIScript.cs" />
     <Compile Include="Assets\Scripts\Game\SheepDestroyerScript.cs" />
     <Compile Include="Assets\Scripts\Game\SheepScript.cs" />
@@ -80,7 +78,6 @@
     <None Include="Assets\Meshes\Menu\DELETE IF USED.txt" />
     <None Include="Assets\Physics\Game\DELETE IF USED.txt" />
     <None Include="Assets\Textures\Menu\Metallic\DELETE IF USED.txt" />
-    <None Include="Assets\RippleEffect\RippleEffect.shader" />
     <None Include="Assets\Textures\Menu\Specular\DELETE IF USED.txt" />
     <None Include="Assets\Textures\Game\Opacity\DELETE IF USED.txt" />
     <None Include="Assets\Animations\Menu\DELETE IF USED.txt" />
@@ -106,32 +103,26 @@
     <None Include="Assets\Meshes\Game\DELETE IF USED.txt" />
     <None Include="Assets\Audio\Game\DELETE IF USED.txt" />
     <None Include="Assets\Shaders\DELETE IF USED.txt" />
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/s170726/Desktop/SVN/Faded-Knight-Production.git/trunk/Hypercasual Cooking Game/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/s170726/Desktop/SVN/Faded-Knight-Production.git/trunk/Hypercasual Cooking Game/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Users/s170726/Desktop/SVN/Faded-Knight-Production.git/trunk/Hypercasual Cooking Game/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/s170726/Desktop/SVN/Faded-Knight-Production.git/trunk/Hypercasual Cooking Game/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>C:/Users/s170726/Desktop/SVN/Faded-Knight-Production.git/trunk/Hypercasual Cooking Game/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor">
       <HintPath>C:/Users/s170726/Desktop/SVN/Faded-Knight-Production.git/trunk/Hypercasual Cooking Game/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
       <HintPath>C:/Users/s170726/Desktop/SVN/Faded-Knight-Production.git/trunk/Hypercasual Cooking Game/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.TextMeshPro.Editor">
+      <HintPath>C:/Users/s170726/Desktop/SVN/Faded-Knight-Production.git/trunk/Hypercasual Cooking Game/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.RenderPipelines.Lightweight.Runtime">
       <HintPath>C:/Users/s170726/Desktop/SVN/Faded-Knight-Production.git/trunk/Hypercasual Cooking Game/Library/ScriptAssemblies/Unity.RenderPipelines.Lightweight.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Lightweight.Editor">
       <HintPath>C:/Users/s170726/Desktop/SVN/Faded-Knight-Production.git/trunk/Hypercasual Cooking Game/Library/ScriptAssemblies/Unity.RenderPipelines.Lightweight.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.PackageManagerUI.Editor">
+      <HintPath>C:/Users/s170726/Desktop/SVN/Faded-Knight-Production.git/trunk/Hypercasual Cooking Game/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.CollabProxy.Editor">
+      <HintPath>C:/Users/s170726/Desktop/SVN/Faded-Knight-Production.git/trunk/Hypercasual Cooking Game/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Editor">
       <HintPath>C:/Users/s170726/Desktop/SVN/Faded-Knight-Production.git/trunk/Hypercasual Cooking Game/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
@@ -144,6 +135,12 @@
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
       <HintPath>C:/Users/s170726/Desktop/SVN/Faded-Knight-Production.git/trunk/Hypercasual Cooking Game/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>C:/Users/s170726/Desktop/SVN/Faded-Knight-Production.git/trunk/Hypercasual Cooking Game/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.DataPrivacy">
+      <HintPath>C:/Users/s170726/Desktop/SVN/Faded-Knight-Production.git/trunk/Hypercasual Cooking Game/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.4f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

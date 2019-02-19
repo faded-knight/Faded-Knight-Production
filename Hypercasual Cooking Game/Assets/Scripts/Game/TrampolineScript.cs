@@ -3,6 +3,10 @@ using System.Collections;
 
 public class TrampolineScript : MonoBehaviour {
 
+    //Static Script References
+    [SerializeField]
+    private bool devTrampoline;
+
     //Private Vector References
     private Vector2 leftAnchor;
     private Vector2 rightAnchor;
@@ -25,8 +29,16 @@ public class TrampolineScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+        devTrampoline = GameObject.FindGameObjectWithTag("GameController").GetComponent<InputHandler>().breakableTrampolines;
+
         initialScale = transform.localScale;
 	}
+
+    private void FixedUpdate()
+    {
+        devTrampoline = GameObject.FindGameObjectWithTag("GameController").GetComponent<InputHandler>().breakableTrampolines;
+    }
 
     public void InitializeDimensions(Vector2 anchor1, Vector2 anchor2)
     {
@@ -70,11 +82,12 @@ public class TrampolineScript : MonoBehaviour {
         strength = strengthScalingValue / distance;
     }
 
+    //Registers contact between trampoline and ingredient
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Bouncer")
         {
-            Debug.Log(other.contactCount);
+            //Debug.Log(other.contactCount);
             Vector2 collisionNormal = -1 * other.GetContact(0).normal.normalized;
 
             other.gameObject.GetComponent<Rigidbody2D>().AddForce(collisionNormal * strength);
@@ -82,7 +95,10 @@ public class TrampolineScript : MonoBehaviour {
             //Deactivates Bool if max trampolines is not reached
             GameObject.FindGameObjectWithTag("GameController").GetComponent<InputHandler>().trampolinesFull = false;
 
-            Destroy(gameObject);
+            if (devTrampoline)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

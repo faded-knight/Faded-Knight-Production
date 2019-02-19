@@ -28,7 +28,7 @@ public class IndicatorScript : MonoBehaviour {
 
             float scalingFactor = 1 - ((parentBouncer.transform.position.y - topOfScreen) / topOfScreen) / 1.5f;
 
-            Debug.Log("scaling factor: " + scalingFactor);
+            //Debug.Log("scaling factor: " + scalingFactor);
 
             transform.localScale = new Vector3(0.5f, 0.5f, 0.5f) * scalingFactor;
 

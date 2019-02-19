@@ -4,10 +4,13 @@ using System.Collections;
 public class ExitScript : MonoBehaviour {
     //Script References
     ScoreUIScript scoreDisplay;
+    SpawnerScript ingredientScript;
 
     //Public Float Variables
     public float activeTime;
     public float loopTime;
+    [HideInInspector]
+    public float currentSpawnedIngredients;
 
     //Private Float Variables
     private float scaleY = 0.0f;
@@ -85,6 +88,7 @@ public class ExitScript : MonoBehaviour {
     {
         Destroy(sheep);
         scoreDisplay.IncrementPlayerScore();
+        currentSpawnedIngredients--;
     }
 
     void OnTriggerEnter2D(Collider2D other)

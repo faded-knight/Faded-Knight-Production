@@ -2,27 +2,31 @@
 using System.Collections;
 
 public class SpawnerScript : MonoBehaviour {
+
     //Script References
     ScoreUIScript scoreScript;
     ExitScript exitScript;
-    CoinManagerScript coinManager;
 
     //Object References
-    public GameObject spawnObject;
+    [Header("Insert Ingredients Here")]
+    public GameObject[] ingredientsPrefab;
 
+    [Header("Changeable Game Values")]
     //Public Interactable Floats
     public float timeBetweenSpawns;
+    [HideInInspector]
     public float gameTime;
 
     //Private Local Floats
     private float currentSpawnTimer;
+    [SerializeField]
+    private float maxSpawnedIngredients = 5;
 
     //Public Interactable Ints
     [Range(1, 10)]
     public int lives;
 
     //Private Local Ints
-    [SerializeField]
     private int droppedBalls = 0;
 
     //References Objects, sets currentSpawnTimer, sets gameTime
@@ -32,11 +36,12 @@ public class SpawnerScript : MonoBehaviour {
         scoreScript = GameObject.FindGameObjectWithTag("UI").GetComponent<ScoreUIScript>();
         exitScript = GameObject.FindGameObjectWithTag("Exit").GetComponent<ExitScript>();
 
+        exitScript.currentSpawnedIngredients = 0;
+
         gameTime = 0.0f;
 
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
-        coinManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<CoinManagerScript>();
 	}
 	
 	void Update () {
@@ -50,32 +55,36 @@ public class SpawnerScript : MonoBehaviour {
 
         gameTime += Time.deltaTime;
 
-        if (currentSpawnTimer > timeBetweenSpawns)
+        if (currentSpawnTimer > timeBetweenSpawns && exitScript.currentSpawnedIngredients < maxSpawnedIngredients)
         {
             SpawnObject();
         }
 	}
 
+    //Removes 1 from currentSpawnedIngredients and Removes a life
     public void DropBall()
     {
         droppedBalls++;
         scoreScript.SetScoreDisplay();
+        exitScript.currentSpawnedIngredients--;
     }
+
 
     public int GetLives()
     {
         return lives - droppedBalls;
     }
 
+    //Resets all values if player loses game
     public void Reset()
     {
         scoreScript.SaveHighScore();
-        coinManager.SaveData();
         scoreScript.ResetPlayerScore();
 
         gameTime = 0.0f;
         currentSpawnTimer = timeBetweenSpawns;
         droppedBalls = 0;
+        exitScript.currentSpawnedIngredients = 0;
 
         exitScript.Reset();
 
@@ -90,11 +99,15 @@ public class SpawnerScript : MonoBehaviour {
         }
     }
 
+    //Spawns A random ingredient and adds to currentSpawnedIngredients, resets currentSpawnTimer
     void SpawnObject()
     {
-        GameObject obj = (GameObject)Instantiate(spawnObject, transform.position, transform.rotation);
-        obj.GetComponentInChildren<Rigidbody2D>().velocity = new Vector2(Random.Range(-3.0f, 3.0f), 0);
+        int RandInt = Random.Range(0, ingredientsPrefab.Length);
+            GameObject obj = (GameObject)Instantiate(ingredientsPrefab[RandInt], transform.position, transform.rotation);
 
         currentSpawnTimer = 0.0f;
+        exitScript.currentSpawnedIngredients++;
+
+        Debug.Log(exitScript.currentSpawnedIngredients);
     }
 }
