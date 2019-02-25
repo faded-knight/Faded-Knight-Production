@@ -149,7 +149,7 @@ public class LavaScript : MonoBehaviour {
 
     void AbsorbSheep(GameObject sheep)
     {
-        sheep.GetComponent<SheepScript>().GetAbsorbed();
+        sheep.GetComponent<AbsorbScript>().GetAbsorbed();
     }
 }
 

@@ -1,15 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
-public class SpawnerScript : MonoBehaviour {
+public class SpawnerScript : MonoBehaviour
+{
+
+    //Struct or string references
+    public Ingredient nextObject;
+    [System.Serializable]
+    public struct Ingredient
+    {
+        public GameObject IngredientObject;
+        public string ObjectName;
+    }
 
     //Script References
     ScoreUIScript scoreScript;
     ExitScript exitScript;
+    RecipesScript recipeScript;
 
-    //Object References
-    [Header("Insert Ingredients Here")]
-    public GameObject[] ingredientsPrefab;
+    //Private Game Object References
+    private GameObject recipeUI;
+
+    //Public Game Object References
+    public Ingredient[] ingredientsPrefab;
 
     [Header("Changeable Game Values")]
     //Public Interactable Floats
@@ -26,15 +40,26 @@ public class SpawnerScript : MonoBehaviour {
     [Range(1, 10)]
     public int lives;
 
-    //Private Local Ints
+    //Private Interactable Ints
     private int droppedBalls = 0;
+    private int RandInt;
+
+    //Decides the first object to spawn in the game
+    private void Awake()
+    {
+        recipeUI = GameObject.Find("RecipeUI");
+
+        DecideObject();
+    }
 
     //References Objects, sets currentSpawnTimer, sets gameTime
-	void Start () {
+    void Start()
+    {
         currentSpawnTimer = timeBetweenSpawns;
 
         scoreScript = GameObject.FindGameObjectWithTag("UI").GetComponent<ScoreUIScript>();
         exitScript = GameObject.FindGameObjectWithTag("Exit").GetComponent<ExitScript>();
+        recipeScript = GameObject.FindGameObjectWithTag("GameController").GetComponent<RecipesScript>();
 
         exitScript.currentSpawnedIngredients = 0;
 
@@ -42,9 +67,10 @@ public class SpawnerScript : MonoBehaviour {
 
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
-	}
-	
-	void Update () {
+    }
+
+    void Update()
+    {
 
         if (droppedBalls == lives)
         {
@@ -59,7 +85,7 @@ public class SpawnerScript : MonoBehaviour {
         {
             SpawnObject();
         }
-	}
+    }
 
     //Removes 1 from currentSpawnedIngredients and Removes a life
     public void DropBall()
@@ -99,15 +125,41 @@ public class SpawnerScript : MonoBehaviour {
         }
     }
 
-    //Spawns A random ingredient and adds to currentSpawnedIngredients, resets currentSpawnTimer
+    //Decides next ingredient to Spawn
+    void DecideObject()
+    {
+        RandInt = Random.Range(0, ingredientsPrefab.Length);
+        GameObject obj = ingredientsPrefab[RandInt].IngredientObject;
+        nextObject = ingredientsPrefab[RandInt];
+        NextIngredient();
+    }
+
+    void NextIngredient()
+    {
+        //References the Child Objects of the RecipeUI Parent
+        Transform[] t = recipeUI.GetComponentsInChildren<Transform>();
+
+        Transform theParent = t[0];
+        Transform firstChild = t[1];
+
+        t[1].GetComponent<Text>().text = nextObject.ObjectName;
+    }
+
+    //Spawns Ingredient defined in DecideObject() and adds to currentSpawnedIngredients, resets currentSpawnTimer
     void SpawnObject()
     {
-        int RandInt = Random.Range(0, ingredientsPrefab.Length);
-            GameObject obj = (GameObject)Instantiate(ingredientsPrefab[RandInt], transform.position, transform.rotation);
+
+        int rand1 = Random.Range(0, 60);
+        int rand2 = Random.Range(0, 30);
+
+        GameObject obj = Instantiate(ingredientsPrefab[RandInt].IngredientObject, transform.position, transform.rotation * Quaternion.Euler(0, rand1, rand2));
 
         currentSpawnTimer = 0.0f;
         exitScript.currentSpawnedIngredients++;
 
+        DecideObject();
+
         Debug.Log(exitScript.currentSpawnedIngredients);
+
     }
 }

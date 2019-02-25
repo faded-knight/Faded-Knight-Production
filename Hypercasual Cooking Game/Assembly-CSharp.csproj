@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Game\AbsorbScript.cs" />
     <Compile Include="Assets\Scripts\Game\ArrowScript.cs" />
     <Compile Include="Assets\Scripts\Game\ExitScript.cs" />
     <Compile Include="Assets\Scripts\Game\IndicatorScript.cs" />
@@ -70,18 +71,17 @@
     <Compile Include="Assets\Scripts\Game\RecipesScript.cs" />
     <Compile Include="Assets\Scripts\Game\ScoreUIScript.cs" />
     <Compile Include="Assets\Scripts\Game\SheepDestroyerScript.cs" />
-    <Compile Include="Assets\Scripts\Game\SheepScript.cs" />
     <Compile Include="Assets\Scripts\Game\SpawnerScript.cs" />
     <Compile Include="Assets\Scripts\Game\TrampolineScript.cs" />
     <Compile Include="Assets\Scripts\Menu\MenuManager.cs" />
     <None Include="Assets\3rdPartyAssets\DELETE IF USED.txt" />
     <None Include="Assets\Meshes\Menu\DELETE IF USED.txt" />
-    <None Include="Assets\Physics\Game\DELETE IF USED.txt" />
     <None Include="Assets\Textures\Menu\Metallic\DELETE IF USED.txt" />
     <None Include="Assets\Textures\Menu\Specular\DELETE IF USED.txt" />
     <None Include="Assets\Textures\Game\Opacity\DELETE IF USED.txt" />
     <None Include="Assets\Animations\Menu\DELETE IF USED.txt" />
     <None Include="Assets\Textures\Game\Specular\DELETE IF USED.txt" />
+    <None Include="Assets\Materials\Game\Bouncer Materials\Dairy\DELETIFUSED.txt" />
     <None Include="Assets\Particle Systems\Game\DELETE IF USED.txt" />
     <None Include="Assets\Particle Systems\Menu\DELETE IF USED.txt" />
     <None Include="Assets\Animations\Game\DELETE IF USED.txt" />
@@ -89,18 +89,18 @@
     <None Include="Assets\Scenes\Gold\DELETE IF USED.txt" />
     <None Include="Assets\Textures\Game\Emissive\DELETE IF USED.txt" />
     <None Include="Assets\Materials\Menu\DELETE IF USED.txt" />
+    <None Include="Assets\Materials\Game\Bouncer Materials\Rubbish\DELETIFUSED.txt" />
     <None Include="Assets\Audio\Menu\DELETE IF USED.txt" />
     <None Include="Assets\Physics\Menu\DELETE IF USED.txt" />
     <None Include="Assets\Textures\Menu\Emissive\DELETE IF USED.txt" />
     <None Include="Assets\Textures\Game\Roughness\DELETE IF USED.txt" />
     <None Include="Assets\Textures\Menu\Opacity\DELETE IF USED.txt" />
     <None Include="Assets\Textures\Menu\Roughness\DELETE IF USED.txt" />
-    <None Include="Assets\Textures\Game\Diffuse\DELETE IF USED.txt" />
     <None Include="Assets\Textures\Menu\Diffuse\DELETE IF USED.txt" />
     <None Include="Assets\Scenes\Demos\DELETE IF USED.txt" />
     <None Include="Assets\Scenes\Beta\DELETE IF USED.txt" />
     <None Include="Assets\Textures\Game\Metallic\DELETE IF USED.txt" />
-    <None Include="Assets\Meshes\Game\DELETE IF USED.txt" />
+    <None Include="Assets\Prefabs\Menu\DELETEIFUSED.txt" />
     <None Include="Assets\Audio\Game\DELETE IF USED.txt" />
     <None Include="Assets\Shaders\DELETE IF USED.txt" />
     <Reference Include="Unity.RenderPipelines.Core.Editor">

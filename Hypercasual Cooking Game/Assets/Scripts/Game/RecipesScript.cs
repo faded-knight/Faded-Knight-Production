@@ -1,19 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class RecipesScript : MonoBehaviour {
 
+    //Script References
+    SpawnerScript bouncerSpawn;
+
     //GameObject References
-    public GameObject recipesUI;
+    private GameObject recipeUI;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
-        recipesUI = GameObject.Find("RecipeUI");
+        recipeUI = GameObject.Find("RecipeUI");
+        bouncerSpawn = GameObject.FindGameObjectWithTag("GameController").GetComponent<SpawnerScript>();
+
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         
     }
