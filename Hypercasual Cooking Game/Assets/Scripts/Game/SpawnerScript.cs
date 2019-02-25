@@ -148,8 +148,9 @@ public class SpawnerScript : MonoBehaviour
     //Spawns Ingredient defined in DecideObject() and adds to currentSpawnedIngredients, resets currentSpawnTimer
     void SpawnObject()
     {
-        int rand1 = Random.Range(0, 60);
-        int rand2 = Random.Range(0, 30);
+        //Random Angles for 2 separate axis
+        int rand1 = Random.Range(0, 45);
+        int rand2 = Random.Range(0, 75);
 
         GameObject obj = Instantiate(ingredientsPrefab[RandInt].IngredientObject, transform.position, transform.rotation * Quaternion.Euler(0, rand1, rand2));
 
