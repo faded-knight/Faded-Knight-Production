@@ -148,7 +148,6 @@ public class SpawnerScript : MonoBehaviour
     //Spawns Ingredient defined in DecideObject() and adds to currentSpawnedIngredients, resets currentSpawnTimer
     void SpawnObject()
     {
-
         int rand1 = Random.Range(0, 60);
         int rand2 = Random.Range(0, 30);
 
