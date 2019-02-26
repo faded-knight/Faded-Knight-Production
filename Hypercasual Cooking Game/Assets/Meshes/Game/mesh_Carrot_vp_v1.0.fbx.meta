@@ -5,11 +5,16 @@ ModelImporter:
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: AssetSetE
+    2100000: lambert1
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Carrot
-  externalObjects: {}
+    4300000: pPlane1
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 55f6b5b3e4ff35346a4a1013ddde2b76, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
