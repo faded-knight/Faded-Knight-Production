@@ -3,6 +3,12 @@ using System.Collections;
 
 public class LavaScript : MonoBehaviour {
 
+    //---------------------
+    //Script Edited By
+    // Callum Stirrup-Prazak
+    //
+    //---------------------
+
     SpawnerScript spawner;
     public GameObject particle;
 

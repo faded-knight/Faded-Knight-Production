@@ -4,6 +4,12 @@ using System.Collections;
 
 public class ScoreUIScript : MonoBehaviour {
 
+    //---------------------
+    //Script Edits By
+    // Callum Stirrup-Prazak
+    //
+    //---------------------
+
     //Script References
     SpawnerScript gameController;
     

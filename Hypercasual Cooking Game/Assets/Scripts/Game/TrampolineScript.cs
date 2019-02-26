@@ -3,6 +3,12 @@ using System.Collections;
 
 public class TrampolineScript : MonoBehaviour {
 
+    //---------------------
+    //Script Edited By
+    // Callum Stirrup-Prazak
+    //
+    //---------------------
+
     //Static Script References
     [SerializeField]
     private bool devTrampoline;

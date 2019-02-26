@@ -2,6 +2,13 @@
 using System.Collections;
 
 public class ExitScript : MonoBehaviour {
+
+    //---------------------
+    //Script Edits By
+    // Callum Stirrup-Prazak
+    //
+    //---------------------
+
     //Script References
     ScoreUIScript scoreDisplay;
     SpawnerScript ingredientScript;

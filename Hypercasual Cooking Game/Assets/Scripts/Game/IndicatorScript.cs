@@ -3,6 +3,12 @@ using System.Collections;
 
 public class IndicatorScript : MonoBehaviour {
 
+    //---------------------
+    //Script Edits By
+    // Callum Stirrup-Prazak
+    //
+    //---------------------
+
     //Object References
     GameObject parentBouncer;
 

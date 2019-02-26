@@ -5,6 +5,12 @@ using UnityEngine.UI;
 public class SpawnerScript : MonoBehaviour
 {
 
+        //---------------------
+    //Script Created By
+    // Callum Stirrup-Prazak
+    //
+    //---------------------
+
     //Struct or string references
     public Ingredient nextObject;
     [System.Serializable]
