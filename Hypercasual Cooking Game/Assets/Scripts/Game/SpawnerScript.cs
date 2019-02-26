@@ -28,13 +28,16 @@ public class SpawnerScript : MonoBehaviour
     [Header("Changeable Game Values")]
     //Public Interactable Floats
     public float timeBetweenSpawns;
-    [HideInInspector]
-    public float gameTime;
+
+    public float axisX;
+    public float axisY;
+    public float axisZ;
 
     //Private Local Floats
     private float currentSpawnTimer;
     [SerializeField]
     private float maxSpawnedIngredients = 5;
+    private float gameTime;
 
     //Public Interactable Ints
     [Range(1, 10)]
@@ -148,11 +151,8 @@ public class SpawnerScript : MonoBehaviour
     //Spawns Ingredient defined in DecideObject() and adds to currentSpawnedIngredients, resets currentSpawnTimer
     void SpawnObject()
     {
-        //Random Angles for 2 separate axis
-        int rand1 = Random.Range(0, 45);
-        int rand2 = Random.Range(0, 75);
 
-        GameObject obj = Instantiate(ingredientsPrefab[RandInt].IngredientObject, transform.position, transform.rotation * Quaternion.Euler(0, rand1, rand2));
+        GameObject obj = Instantiate(ingredientsPrefab[RandInt].IngredientObject, transform.position, transform.rotation * Quaternion.Euler(axisX, axisY, axisZ));
 
         currentSpawnTimer = 0.0f;
         exitScript.currentSpawnedIngredients++;
