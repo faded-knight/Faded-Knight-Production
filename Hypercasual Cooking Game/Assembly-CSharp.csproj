@@ -78,10 +78,11 @@
     <None Include="Assets\Meshes\Menu\DELETE IF USED.txt" />
     <None Include="Assets\Textures\Menu\Metallic\DELETE IF USED.txt" />
     <None Include="Assets\Textures\Menu\Specular\DELETE IF USED.txt" />
+    <None Include="Assets\Materials\Game\Bouncer Materials\Dairy\DELETIFUSED.txt" />
     <None Include="Assets\Textures\Game\Opacity\DELETE IF USED.txt" />
     <None Include="Assets\Animations\Menu\DELETE IF USED.txt" />
     <None Include="Assets\Textures\Game\Specular\DELETE IF USED.txt" />
-    <None Include="Assets\Materials\Game\Bouncer Materials\Dairy\DELETIFUSED.txt" />
+    <None Include="Assets\Materials\Game\Bouncer Materials\-OLD MATS\Dairy\DELETIFUSED.txt" />
     <None Include="Assets\Particle Systems\Game\DELETE IF USED.txt" />
     <None Include="Assets\Particle Systems\Menu\DELETE IF USED.txt" />
     <None Include="Assets\Animations\Game\DELETE IF USED.txt" />
@@ -89,7 +90,7 @@
     <None Include="Assets\Scenes\Gold\DELETE IF USED.txt" />
     <None Include="Assets\Textures\Game\Emissive\DELETE IF USED.txt" />
     <None Include="Assets\Materials\Menu\DELETE IF USED.txt" />
-    <None Include="Assets\Materials\Game\Bouncer Materials\Rubbish\DELETIFUSED.txt" />
+    <None Include="Assets\Materials\Game\Bouncer Materials\-OLD MATS\Rubbish\DELETIFUSED.txt" />
     <None Include="Assets\Audio\Menu\DELETE IF USED.txt" />
     <None Include="Assets\Physics\Menu\DELETE IF USED.txt" />
     <None Include="Assets\Textures\Menu\Emissive\DELETE IF USED.txt" />
@@ -103,6 +104,7 @@
     <None Include="Assets\Prefabs\Menu\DELETEIFUSED.txt" />
     <None Include="Assets\Audio\Game\DELETE IF USED.txt" />
     <None Include="Assets\Shaders\DELETE IF USED.txt" />
+    <None Include="Assets\Materials\Game\Bouncer Materials\Rubbish\DELETIFUSED.txt" />
     <Reference Include="Unity.RenderPipelines.Core.Editor">
       <HintPath>C:/Users/s170726/Desktop/SVN/Faded-Knight-Production.git/trunk/Hypercasual Cooking Game/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
     </Reference>
