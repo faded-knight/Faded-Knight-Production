@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class RecipesScript : MonoBehaviour {
@@ -9,7 +10,7 @@ public class RecipesScript : MonoBehaviour {
     // Callum Stirrup-Prazak
     //
     //---------------------
-    
+
     //Recipe control System
     [Header("Recipe Creation List")]
 
@@ -25,16 +26,8 @@ public class RecipesScript : MonoBehaviour {
         public string recipeName;
     }
 
-    //Struct References
-    public ImageChange[] soupSprites;
-    [System.Serializable]
-    public struct ImageChange
-    {
-        [Tooltip("Put the image sprites here")]
-        public Sprite ingredientSprites;
-        public string ingredientName;
-
-    }
+    //List References
+    public Sprite[] ingredientSprites;
 
     //Script References
     SpawnerScript bouncerSpawn;
@@ -46,8 +39,14 @@ public class RecipesScript : MonoBehaviour {
     [HideInInspector]
     public bool recipeComplete;
 
+    //Private Bool References
+    private bool repeatList = true;
+    
     //Public Int References
     public int nextRecipe;
+
+    //Private Int References
+    private int currentIngredients;
 
     //Private Int References
     [SerializeField]
@@ -59,7 +58,6 @@ public class RecipesScript : MonoBehaviour {
     private Image ingredient2;
     private Image ingredient3;
 
-
     // Start is called before the first frame update
     public void Start()
     {
@@ -67,7 +65,10 @@ public class RecipesScript : MonoBehaviour {
         bouncerSpawn = GameObject.FindGameObjectWithTag("GameController").GetComponent<SpawnerScript>();
         recipeComplete = false;
         currentRecipe = -1;
+
     }
+
+    //UGHHHHH PROGRAMMING SUCKS
 
     // Update is called once per frame
     void Update()
@@ -96,44 +97,34 @@ public class RecipesScript : MonoBehaviour {
             //Tomato Soup Recipe
             default:
                 currentRecipe = 0;
-                ingredient1.sprite = soupSprites[0].ingredientSprites;
-                ingredient2.sprite = soupSprites[0].ingredientSprites;
-                ingredient3.sprite = soupSprites[0].ingredientSprites;
+                ingredient1.sprite = ingredientSprites[17];
+                ingredient2.sprite = ingredientSprites[17];
+                ingredient3.sprite = ingredientSprites[17];
                 break;
             
             case 1:
                 currentRecipe = 1;
-                ingredient1.sprite = soupSprites[0].ingredientSprites;
-                ingredient2.sprite = soupSprites[0].ingredientSprites;
-                ingredient3.sprite = soupSprites[0].ingredientSprites;
+
                 break;
 
             case 2:
                 currentRecipe = 2;
-                ingredient1.sprite = soupSprites[0].ingredientSprites;
-                ingredient2.sprite = soupSprites[0].ingredientSprites;
-                ingredient3.sprite = soupSprites[0].ingredientSprites;
+
                 break;
 
             case 3:
                 currentRecipe = 3;
-                ingredient1.sprite = soupSprites[0].ingredientSprites;
-                ingredient2.sprite = soupSprites[0].ingredientSprites;
-                ingredient3.sprite = soupSprites[0].ingredientSprites;
+
                 break;
 
             case 4:
                 currentRecipe = 4;
-                ingredient1.sprite = soupSprites[0].ingredientSprites;
-                ingredient2.sprite = soupSprites[0].ingredientSprites;
-                ingredient3.sprite = soupSprites[0].ingredientSprites;
+
                 break;
 
             case 5:
                 currentRecipe = 5;
-                ingredient1.sprite = soupSprites[0].ingredientSprites;
-                ingredient2.sprite = soupSprites[0].ingredientSprites;
-                ingredient3.sprite = soupSprites[0].ingredientSprites;
+
                 break;
         }
     }
@@ -142,6 +133,8 @@ public class RecipesScript : MonoBehaviour {
     void DecideNextRecipe()
     {
         nextRecipe = Random.Range(0, recipeList.Length);
+
+        currentRecipe = nextRecipe;
 
         LoadRecipe();
     }
