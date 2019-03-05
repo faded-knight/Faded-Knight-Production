@@ -10,7 +10,6 @@ public class ExitScript : MonoBehaviour {
     //---------------------
 
     //Script References
-    ScoreUIScript scoreDisplay;
     SpawnerScript ingredientScript;
 
     //Public Float Variables
@@ -28,7 +27,6 @@ public class ExitScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        scoreDisplay = GameObject.FindGameObjectWithTag("UI").GetComponent<ScoreUIScript>();
         InitializePosition();
 	}
 
@@ -94,7 +92,6 @@ public class ExitScript : MonoBehaviour {
     void SaveSheep(GameObject sheep)
     {
         Destroy(sheep);
-        scoreDisplay.IncrementPlayerScore();
         currentSpawnedIngredients--;
     }
 

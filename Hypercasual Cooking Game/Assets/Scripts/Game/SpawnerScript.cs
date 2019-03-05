@@ -5,20 +5,14 @@ using UnityEngine.UI;
 public class SpawnerScript : MonoBehaviour
 {
 
-        //---------------------
+    //---------------------
     //Script Created By
     // Callum Stirrup-Prazak
     //
     //---------------------
 
     //Struct or string references
-    public Ingredient nextObject;
-    [System.Serializable]
-    public struct Ingredient
-    {
-        public GameObject IngredientObject;
-        public string ObjectName;
-    }
+    public GameObject nextObject;
 
     //Script References
     ScoreUIScript scoreScript;
@@ -29,7 +23,7 @@ public class SpawnerScript : MonoBehaviour
     private GameObject recipeUI;
 
     //Public Game Object References
-    public Ingredient[] ingredientsPrefab;
+    public GameObject[] ingredientsPrefab;
 
     [Header("Changeable Game Values")]
     //Public Interactable Floats
@@ -138,7 +132,7 @@ public class SpawnerScript : MonoBehaviour
     void DecideObject()
     {
         RandInt = Random.Range(0, ingredientsPrefab.Length);
-        GameObject obj = ingredientsPrefab[RandInt].IngredientObject;
+        GameObject obj = ingredientsPrefab[RandInt];
         nextObject = ingredientsPrefab[RandInt];
         NextIngredient();
     }
@@ -151,14 +145,14 @@ public class SpawnerScript : MonoBehaviour
         Transform theParent = t[0];
         Transform firstChild = t[1];
 
-        t[1].GetComponent<Text>().text = nextObject.ObjectName;
+        t[1].GetComponent<Image>().sprite = ingredientsPrefab[RandInt].GetComponentInChildren<SpriteRenderer>().sprite;
     }
 
     //Spawns Ingredient defined in DecideObject() and adds to currentSpawnedIngredients, resets currentSpawnTimer
     void SpawnObject()
     {
 
-        GameObject obj = Instantiate(ingredientsPrefab[RandInt].IngredientObject, transform.position, transform.rotation * Quaternion.Euler(axisX, axisY, axisZ));
+        GameObject obj = Instantiate(ingredientsPrefab[RandInt], transform.position, transform.rotation * Quaternion.Euler(axisX, axisY, axisZ));
 
         currentSpawnTimer = 0.0f;
         exitScript.currentSpawnedIngredients++;
