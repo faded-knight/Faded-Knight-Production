@@ -102,7 +102,7 @@ public class RecipesScript : MonoBehaviour {
                 ingredient2.sprite = recipeList[currentRecipe].ingredients[1].GetComponentInChildren<SpriteRenderer>().sprite;
                 ingredient3.sprite = recipeList[currentRecipe].ingredients[2].GetComponentInChildren<SpriteRenderer>().sprite;
                 break;
-            
+            //Tofu Soup Recipe
             case 1:
                 currentRecipe = 1;
 

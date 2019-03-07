@@ -11,6 +11,7 @@ public class ExitScript : MonoBehaviour {
 
     //Script References
     SpawnerScript ingredientScript;
+    public ScoreUIScript scoreUI;
 
     //Public Float Variables
     public float activeTime;
@@ -91,6 +92,7 @@ public class ExitScript : MonoBehaviour {
 
     void SaveSheep(GameObject sheep)
     {
+        scoreUI.IncrementPlayerScore();
         Destroy(sheep);
         currentSpawnedIngredients--;
     }
