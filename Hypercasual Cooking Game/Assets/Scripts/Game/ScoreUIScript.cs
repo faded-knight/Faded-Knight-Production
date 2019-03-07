@@ -14,9 +14,9 @@ public class ScoreUIScript : MonoBehaviour {
     SpawnerScript gameController;
     
     //Private Object References
-    private Text HighScore;
-    private Text CurrentScore;
-    private Text Lives;
+    public Text HighScore;
+    public Text CurrentScore;
+    public Text Lives;
 
     //Constant References
     string highScoreKey = "HighScore";
@@ -29,14 +29,19 @@ public class ScoreUIScript : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        HighScore = gameObject.GetComponentsInChildren<Text>()[0];
-        CurrentScore = gameObject.GetComponentsInChildren<Text>()[1];
-        Lives = gameObject.GetComponentsInChildren<Text>()[2];
+        //HighScore = gameObject.GetComponentsInChildren<Text>()[0];
+        //CurrentScore = gameObject.GetComponentsInChildren<Text>()[1];
+        //Lives = gameObject.GetComponentsInChildren<Text>()[2];
 
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<SpawnerScript>();
 
         highScoreValue = PlayerPrefs.GetInt(highScoreKey, 0);
 
+        SetScoreDisplay();
+    }
+
+    public void Update()
+    {
         SetScoreDisplay();
     }
 
@@ -47,7 +52,7 @@ public class ScoreUIScript : MonoBehaviour {
             highScoreValue = playerCurrentScore;
         }
 
-        Lives.text = "Lives: " + gameController.GetLives();
+        Lives.text = "Lives: " + gameController.GetLives().ToString();
 
         HighScore.text = "Best: " + highScoreValue.ToString();
 

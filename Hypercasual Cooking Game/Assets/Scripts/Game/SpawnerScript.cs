@@ -15,7 +15,7 @@ public class SpawnerScript : MonoBehaviour
     public GameObject nextObject;
 
     //Script References
-    ScoreUIScript scoreScript;
+    public ScoreUIScript scoreScript;
     ExitScript exitScript;
     RecipesScript recipeScript;
 
@@ -41,6 +41,7 @@ public class SpawnerScript : MonoBehaviour
 
     //Public Interactable Ints
     [Range(1, 10)]
+    public int maxLives;
     public int lives;
 
     //Private Interactable Ints
@@ -60,7 +61,7 @@ public class SpawnerScript : MonoBehaviour
     {
         currentSpawnTimer = timeBetweenSpawns;
 
-        scoreScript = GameObject.FindGameObjectWithTag("UI").GetComponent<ScoreUIScript>();
+        //scoreScript = GameObject.FindGameObjectWithTag("UI").GetComponent<ScoreUIScript>();
         exitScript = GameObject.FindGameObjectWithTag("Exit").GetComponent<ExitScript>();
         recipeScript = GameObject.FindGameObjectWithTag("GameController").GetComponent<RecipesScript>();
 
@@ -70,15 +71,18 @@ public class SpawnerScript : MonoBehaviour
 
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
+        lives = maxLives; 
+
     }
 
     void Update()
     {
 
-        if (droppedBalls == lives)
+        if (lives <= 0)
         {
             Reset();
         }
+        
 
         currentSpawnTimer += Time.deltaTime;
 
@@ -101,7 +105,7 @@ public class SpawnerScript : MonoBehaviour
 
     public int GetLives()
     {
-        return lives - droppedBalls;
+        return lives/* - droppedBalls*/;
     }
 
     //Resets all values if player loses game
@@ -116,6 +120,8 @@ public class SpawnerScript : MonoBehaviour
         exitScript.currentSpawnedIngredients = 0;
 
         exitScript.Reset();
+
+        lives = maxLives;
 
         foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Bouncer"))
         {
@@ -159,7 +165,7 @@ public class SpawnerScript : MonoBehaviour
 
         DecideObject();
 
-        Debug.Log(exitScript.currentSpawnedIngredients);
+        //Debug.Log(exitScript.currentSpawnedIngredients);
 
     }
 }

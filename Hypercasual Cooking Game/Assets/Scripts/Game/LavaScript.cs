@@ -9,7 +9,7 @@ public class LavaScript : MonoBehaviour {
     //
     //---------------------
 
-    SpawnerScript spawner;
+    public SpawnerScript spawner;
     public GameObject particle;
 
     private Spring[] springs;
@@ -25,7 +25,7 @@ public class LavaScript : MonoBehaviour {
 
 	void Start () {
 
-        spawner = GameObject.FindGameObjectWithTag("GameController").GetComponent<SpawnerScript>();
+        //spawner = GameObject.FindGameObjectWithTag("GameController").GetComponent<SpawnerScript>();
 
         springs = new Spring[springCount];
         triangles = new int[springCount * 6];
@@ -142,15 +142,31 @@ public class LavaScript : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == 9)
+        Debug.Log("entered the thing");
+        if(other.gameObject.tag == "Bouncer")
         {
             //if a sheep
             Splash(other.transform.position.x, 1.5f);
             AbsorbSheep(other.gameObject);
             spawner.DropBall();
+            spawner.lives--;
+
+            FindObjectOfType<ScoreUIScript>().SetScoreDisplay();
 
             Instantiate(particle, other.transform.position - new Vector3(0, 0.5f, 0), transform.rotation);
         }
+        //if (other.gameObject.layer == 9)
+        //{
+        //    //if a sheep
+        //    Splash(other.transform.position.x, 1.5f);
+        //    AbsorbSheep(other.gameObject);
+        //    spawner.DropBall();
+        //    spawner.lives--;
+        //
+        //    FindObjectOfType<ScoreUIScript>().SetScoreDisplay();
+        //
+        //    Instantiate(particle, other.transform.position - new Vector3(0, 0.5f, 0), transform.rotation);
+        //}
     }
 
     void AbsorbSheep(GameObject sheep)
