@@ -25,6 +25,9 @@ public class RecipesScript : MonoBehaviour {
         [Tooltip("The Name of the Recipe in the game")]
         public string recipeName;
     }
+    //String References
+    [HideInInspector]
+    public string currentFallenIngredient;
 
     //List References
     public Sprite[] ingredientSprites;
@@ -38,17 +41,20 @@ public class RecipesScript : MonoBehaviour {
     //Public Bool References
     [HideInInspector]
     public bool recipeComplete;
+
+    //Private Bool References
+    private bool recipeSelected;
     
     //Public Int References
     public int nextRecipe;
 
     //Private Int References
     private int currentIngredients;
+    private int recipeProgress;
 
     //Private Int References
-    [SerializeField]
     [Tooltip("Determines the current selected recipe for the game. Do not edit this number")]
-    private int currentRecipe;
+    public int currentRecipe;
     
     [Header("Recipe Ingredients")]
     //Image Component References
@@ -88,64 +94,164 @@ public class RecipesScript : MonoBehaviour {
     }
 
     //Loads in the next Recipe in the game
-    void LoadRecipe()
+    public void RecipeManager()
     {
         //Used to load the determined recipe into the game.
         switch (nextRecipe)
         {
             //Tomato Soup Recipe
             default:
-                currentRecipe = 0;
+                if (!recipeSelected)
+                {
+                    currentRecipe = 0;
 
-                //Sets Recipe Requirements to Current Recipe
-                ingredient1.sprite = recipeList[currentRecipe].ingredients[0].GetComponentInChildren<SpriteRenderer>().sprite;
-                ingredient2.sprite = recipeList[currentRecipe].ingredients[1].GetComponentInChildren<SpriteRenderer>().sprite;
-                ingredient3.sprite = recipeList[currentRecipe].ingredients[2].GetComponentInChildren<SpriteRenderer>().sprite;
+                    //Sets Recipe Requirements to Current Recipe
+                    ingredient1.sprite = recipeList[currentRecipe].ingredients[0].GetComponentInChildren<SpriteRenderer>().sprite;
+                    ingredient2.sprite = recipeList[currentRecipe].ingredients[1].GetComponentInChildren<SpriteRenderer>().sprite;
+                    ingredient3.sprite = recipeList[currentRecipe].ingredients[2].GetComponentInChildren<SpriteRenderer>().sprite;
+                }
+                else
+                {
+                    //Simplification of referencing recipe items
+                    string r1 = recipeList[currentRecipe].ingredients[0].name;
+                    string r2 = recipeList[currentRecipe].ingredients[1].name;
+                    string r3 = recipeList[currentRecipe].ingredients[2].name;
+
+                    //Checks if currentFallenRecipe == r1 r2 or r3. If true, Add to int
+                    if (currentFallenIngredient == r1 || currentFallenIngredient == r2 || currentFallenIngredient == r3)
+                    {
+                        recipeProgress++;
+                    }
+                }
                 break;
-            //Tofu Soup Recipe
+
+            //Tofu & Vegetable Soup Recipe
             case 1:
-                currentRecipe = 1;
+                if (!recipeSelected)
+                {
+                    currentRecipe = 1;
 
-                //Sets Recipe Requirements to Current Recipe
-                ingredient1.sprite = recipeList[currentRecipe].ingredients[0].GetComponentInChildren<SpriteRenderer>().sprite;
-                ingredient2.sprite = recipeList[currentRecipe].ingredients[1].GetComponentInChildren<SpriteRenderer>().sprite;
-                ingredient3.sprite = recipeList[currentRecipe].ingredients[2].GetComponentInChildren<SpriteRenderer>().sprite;
+                    //Sets Recipe Requirements to Current Recipe
+                    ingredient1.sprite = recipeList[currentRecipe].ingredients[0].GetComponentInChildren<SpriteRenderer>().sprite;
+                    ingredient2.sprite = recipeList[currentRecipe].ingredients[1].GetComponentInChildren<SpriteRenderer>().sprite;
+                    ingredient3.sprite = recipeList[currentRecipe].ingredients[2].GetComponentInChildren<SpriteRenderer>().sprite;
+                }
+                else
+                {
+                    //Simplification of referencing recipe items
+                    string r1 = recipeList[currentRecipe].ingredients[0].name;
+                    string r2 = recipeList[currentRecipe].ingredients[1].name;
+                    string r3 = recipeList[currentRecipe].ingredients[2].name;
+
+                    //Checks if currentFallenRecipe == r1 r2 or r3. If true, Add to int
+                    if (currentFallenIngredient == r1 || currentFallenIngredient == r2 || currentFallenIngredient == r3)
+                    {
+                        recipeProgress++;
+                    }
+                }
                 break;
 
+                //Carrot Soup Recipe
             case 2:
-                currentRecipe = 2;
+                if (!recipeSelected)
+                {
+                    currentRecipe = 2;
 
-                //Sets Recipe Requirements to Current Recipe
-                ingredient1.sprite = recipeList[currentRecipe].ingredients[0].GetComponentInChildren<SpriteRenderer>().sprite;
-                ingredient2.sprite = recipeList[currentRecipe].ingredients[1].GetComponentInChildren<SpriteRenderer>().sprite;
-                ingredient3.sprite = recipeList[currentRecipe].ingredients[2].GetComponentInChildren<SpriteRenderer>().sprite;
+                    //Sets Recipe Requirements to Current Recipe
+                    ingredient1.sprite = recipeList[currentRecipe].ingredients[0].GetComponentInChildren<SpriteRenderer>().sprite;
+                    ingredient2.sprite = recipeList[currentRecipe].ingredients[1].GetComponentInChildren<SpriteRenderer>().sprite;
+                    ingredient3.sprite = recipeList[currentRecipe].ingredients[2].GetComponentInChildren<SpriteRenderer>().sprite;
+                }
+                else
+                {
+                    //Simplification of referencing recipe items
+                    string r1 = recipeList[currentRecipe].ingredients[0].name;
+                    string r2 = recipeList[currentRecipe].ingredients[1].name;
+                    string r3 = recipeList[currentRecipe].ingredients[2].name;
+
+                    //Checks if currentFallenRecipe == r1 r2 or r3. If true, Add to int
+                    if (currentFallenIngredient == r1 || currentFallenIngredient == r2 || currentFallenIngredient == r3)
+                    {
+                        recipeProgress++;
+                    }
+                }
                 break;
 
+                //Beef Stock Stew Recipe
             case 3:
-                currentRecipe = 3;
+                if (!recipeSelected)
+                {
+                    currentRecipe = 3;
 
-                //Sets Recipe Requirements to Current Recipe
-                ingredient1.sprite = recipeList[currentRecipe].ingredients[0].GetComponentInChildren<SpriteRenderer>().sprite;
-                ingredient2.sprite = recipeList[currentRecipe].ingredients[1].GetComponentInChildren<SpriteRenderer>().sprite;
-                ingredient3.sprite = recipeList[currentRecipe].ingredients[2].GetComponentInChildren<SpriteRenderer>().sprite;
+                    //Sets Recipe Requirements to Current Recipe
+                    ingredient1.sprite = recipeList[currentRecipe].ingredients[0].GetComponentInChildren<SpriteRenderer>().sprite;
+                    ingredient2.sprite = recipeList[currentRecipe].ingredients[1].GetComponentInChildren<SpriteRenderer>().sprite;
+                    ingredient3.sprite = recipeList[currentRecipe].ingredients[2].GetComponentInChildren<SpriteRenderer>().sprite;
+                }
+                else
+                {
+                    //Simplification of referencing recipe items
+                    string r1 = recipeList[currentRecipe].ingredients[0].name;
+                    string r2 = recipeList[currentRecipe].ingredients[1].name;
+                    string r3 = recipeList[currentRecipe].ingredients[2].name;
+
+                    //Checks if currentFallenRecipe == r1 r2 or r3. If true, Add to int
+                    if (currentFallenIngredient == r1 || currentFallenIngredient == r2 || currentFallenIngredient == r3)
+                    {
+                        recipeProgress++;
+                    }
+                }
                 break;
 
+                //Spicy Mushroom Stew Recipe
             case 4:
-                currentRecipe = 4;
+                if (!recipeSelected)
+                {
+                    currentRecipe = 4;
 
-                //Sets Recipe Requirements to Current Recipe
-                ingredient1.sprite = recipeList[currentRecipe].ingredients[0].GetComponentInChildren<SpriteRenderer>().sprite;
-                ingredient2.sprite = recipeList[currentRecipe].ingredients[1].GetComponentInChildren<SpriteRenderer>().sprite;
-                ingredient3.sprite = recipeList[currentRecipe].ingredients[2].GetComponentInChildren<SpriteRenderer>().sprite;
+                    //Sets Recipe Requirements to Current Recipe
+                    ingredient1.sprite = recipeList[currentRecipe].ingredients[0].GetComponentInChildren<SpriteRenderer>().sprite;
+                    ingredient2.sprite = recipeList[currentRecipe].ingredients[1].GetComponentInChildren<SpriteRenderer>().sprite;
+                    ingredient3.sprite = recipeList[currentRecipe].ingredients[2].GetComponentInChildren<SpriteRenderer>().sprite;
+                }
+                else
+                {
+                    //Simplification of referencing recipe items
+                    string r1 = recipeList[currentRecipe].ingredients[0].name;
+                    string r2 = recipeList[currentRecipe].ingredients[1].name;
+                    string r3 = recipeList[currentRecipe].ingredients[2].name;
+
+                    //Checks if currentFallenRecipe == r1 r2 or r3. If true, Add to int
+                    if (currentFallenIngredient == r1 || currentFallenIngredient == r2 || currentFallenIngredient == r3)
+                    {
+                        recipeProgress++;
+                    }
+                }
                 break;
-
+                //Chow Mein Recipe
             case 5:
-                currentRecipe = 5;
+                if (!recipeSelected)
+                {
+                    currentRecipe = 5;
 
-                //Sets Recipe Requirements to Current Recipe
-                ingredient1.sprite = recipeList[currentRecipe].ingredients[0].GetComponentInChildren<SpriteRenderer>().sprite;
-                ingredient2.sprite = recipeList[currentRecipe].ingredients[0].GetComponentInChildren<SpriteRenderer>().sprite;
-                ingredient3.sprite = recipeList[currentRecipe].ingredients[0].GetComponentInChildren<SpriteRenderer>().sprite;
+                    //Sets Recipe Requirements to Current Recipe
+                    ingredient1.sprite = recipeList[currentRecipe].ingredients[0].GetComponentInChildren<SpriteRenderer>().sprite;
+                    ingredient2.sprite = recipeList[currentRecipe].ingredients[1].GetComponentInChildren<SpriteRenderer>().sprite;
+                    ingredient3.sprite = recipeList[currentRecipe].ingredients[2].GetComponentInChildren<SpriteRenderer>().sprite;
+                }
+                else
+                {
+                    //Simplification of referencing recipe items
+                    string r1 = recipeList[currentRecipe].ingredients[0].name;
+                    string r2 = recipeList[currentRecipe].ingredients[1].name;
+                    string r3 = recipeList[currentRecipe].ingredients[2].name;
+
+                    //Checks if currentFallenRecipe == r1 r2 or r3. If true, Add to int
+                    if (currentFallenIngredient == r1 || currentFallenIngredient == r2 || currentFallenIngredient == r3)
+                    {
+                        recipeProgress++;
+                    }
+                }
                 break;
         }
     }
@@ -157,6 +263,6 @@ public class RecipesScript : MonoBehaviour {
 
         currentRecipe = nextRecipe;
 
-        LoadRecipe();
+        RecipeManager();
     }
 }

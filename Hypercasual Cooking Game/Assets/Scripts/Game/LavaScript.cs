@@ -9,14 +9,23 @@ public class LavaScript : MonoBehaviour {
     //
     //---------------------
 
+    //Script References
     public SpawnerScript spawner;
+    public RecipesScript recipeManager;
+
+    //Public Game Object References
     public GameObject particle;
 
+    //Physics References
     private Spring[] springs;
+
+    //Int References
     const int springCount = 25;
 
+    //Float References
     private float spread = 0.2f;
 
+    //Specifics for Physic items
     public Vector3[] vertices;
     public Vector2[] uvs;
     public int[] triangles;
@@ -24,8 +33,6 @@ public class LavaScript : MonoBehaviour {
     private Mesh mesh;
 
 	void Start () {
-
-        //spawner = GameObject.FindGameObjectWithTag("GameController").GetComponent<SpawnerScript>();
 
         springs = new Spring[springCount];
         triangles = new int[springCount * 6];
@@ -140,33 +147,43 @@ public class LavaScript : MonoBehaviour {
         Splash(index, speed);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D ingredient)
     {
-        Debug.Log("entered the thing");
-        if(other.gameObject.tag == "Bouncer")
+        if(ingredient.gameObject.tag == "Bouncer")
         {
-            //if a sheep
-            Splash(other.transform.position.x, 1.5f);
-            AbsorbSheep(other.gameObject);
+            //Absorbs Ingredient and Checks if Ingredient is Relevent.
+            Debug.Log(ingredient.gameObject.name + " entered the thing");
+            Splash(ingredient.transform.position.x, 1.5f);
+            AbsorbSheep(ingredient.gameObject);
             spawner.DropBall();
-            spawner.lives--;
 
-            FindObjectOfType<ScoreUIScript>().SetScoreDisplay();
+            //References the Child Objects of the RecipeUI Parent
+            Transform[] t = ingredient.gameObject.GetComponentsInChildren<Transform>();
 
-            Instantiate(particle, other.transform.position - new Vector3(0, 0.5f, 0), transform.rotation);
+            Transform theParent = t[0];
+            Transform firstChild = t[1];
+
+            recipeManager.currentFallenIngredient = t[1].tag;
+
+            Debug.Log(recipeManager.currentFallenIngredient);
+
+            recipeManager.RecipeManager();
+
+            Instantiate(particle, ingredient.transform.position - new Vector3(0, 0.5f, 0), transform.rotation);
+
+
+            /* Old Code, Used specifically towards the old version of the game */
+          //  //if a sheep
+          //  Debug.Log(other.gameObject.name + " entered the thing");
+          //  Splash(other.transform.position.x, 1.5f);
+          //  AbsorbSheep(other.gameObject);
+          //  spawner.DropBall();
+          //  spawner.lives--;
+          //
+          //  FindObjectOfType<ScoreUIScript>().SetScoreDisplay();
+          //
+          //  Instantiate(particle, other.transform.position - new Vector3(0, 0.5f, 0), transform.rotation);
         }
-        //if (other.gameObject.layer == 9)
-        //{
-        //    //if a sheep
-        //    Splash(other.transform.position.x, 1.5f);
-        //    AbsorbSheep(other.gameObject);
-        //    spawner.DropBall();
-        //    spawner.lives--;
-        //
-        //    FindObjectOfType<ScoreUIScript>().SetScoreDisplay();
-        //
-        //    Instantiate(particle, other.transform.position - new Vector3(0, 0.5f, 0), transform.rotation);
-        //}
     }
 
     void AbsorbSheep(GameObject sheep)
@@ -190,7 +207,7 @@ public class Spring
     }
     public void Update()
     {
-        float k = 0.02f; // adjust this value to your liking
+        float k = 0.06f; // adjust this value to your liking
         float x = height - targetHeight;
         float acceleration = (-k * x) - (0.15f * velocity);
 
