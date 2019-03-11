@@ -152,7 +152,7 @@ public class LavaScript : MonoBehaviour {
         if(ingredient.gameObject.tag == "Bouncer")
         {
             //Absorbs Ingredient and Checks if Ingredient is Relevent.
-            Debug.Log(ingredient.gameObject.name + " entered the thing");
+            //Debug.Log(ingredient.gameObject.name + " entered the thing");
             Splash(ingredient.transform.position.x, 1.5f);
             AbsorbSheep(ingredient.gameObject);
             spawner.DropBall();
