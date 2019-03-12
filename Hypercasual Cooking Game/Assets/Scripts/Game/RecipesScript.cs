@@ -96,6 +96,15 @@ public class RecipesScript : MonoBehaviour {
     //Loads in the next Recipe in the game
     public void RecipeManager()
     {
+
+        int maxCounter1 = 1;
+        int maxCounter2 = 2;
+        int maxCounter3 = 3;
+
+        int currentr1 = 0;
+        int currentr2 = 0;
+        int currentr3 = 0;
+
         //Used to load the determined recipe into the game.
         switch (nextRecipe)
         {
@@ -118,9 +127,25 @@ public class RecipesScript : MonoBehaviour {
                     string r3 = recipeList[currentRecipe].ingredients[2].name;
 
                     //Checks if currentFallenRecipe == r1 r2 or r3. If true, Add to int
-                    if (currentFallenIngredient == r1 || currentFallenIngredient == r2 || currentFallenIngredient == r3)
+                    if ((currentFallenIngredient == r1 && currentr1 < maxCounter3) || (currentFallenIngredient == r2 && currentr1 < maxCounter3) || (currentFallenIngredient == r3 && currentr1 < maxCounter3))
                     {
                         recipeProgress++;
+                        if (currentFallenIngredient.Contains("Tomato"))
+                        {
+                            currentr1++;
+                        }
+                    }
+                    else
+                    {
+                        bouncerSpawn.lives--;
+                    }
+
+                    if (recipeProgress >= 3)
+                    {
+                        recipeProgress = 0;
+                        currentr1 = 0;
+
+                        DecideNextRecipe();
                     }
                 }
                 break;
@@ -144,9 +169,36 @@ public class RecipesScript : MonoBehaviour {
                     string r3 = recipeList[currentRecipe].ingredients[2].name;
 
                     //Checks if currentFallenRecipe == r1 r2 or r3. If true, Add to int
-                    if (currentFallenIngredient == r1 || currentFallenIngredient == r2 || currentFallenIngredient == r3)
+                    if ((currentFallenIngredient == r1 && currentr1 < maxCounter1) || (currentFallenIngredient == r2 && currentr2 < maxCounter1) || (currentFallenIngredient == r3 && currentr3 < maxCounter1))
                     {
                         recipeProgress++;
+
+                        if (currentFallenIngredient.Contains("Carrot"))
+                        {
+                            currentr1++;
+                        }
+                        else if (currentFallenIngredient.Contains("Tofu"))
+                        {
+                            currentr2++;
+                        }
+                        else if (currentFallenIngredient.Contains("Celery"))
+                        {
+                            currentr3++;
+                        }
+                    }
+                    else
+                    {
+                        bouncerSpawn.lives--;
+                    }
+
+                    if (recipeProgress >= 3)
+                    {
+                        recipeProgress = 0;
+                        currentr1 = 0;
+                        currentr2 = 0;
+                        currentr3 = 0;
+
+                        DecideNextRecipe();
                     }
                 }
                 break;
@@ -161,6 +213,7 @@ public class RecipesScript : MonoBehaviour {
                     ingredient1.sprite = recipeList[currentRecipe].ingredients[0].GetComponentInChildren<SpriteRenderer>().sprite;
                     ingredient2.sprite = recipeList[currentRecipe].ingredients[1].GetComponentInChildren<SpriteRenderer>().sprite;
                     ingredient3.sprite = recipeList[currentRecipe].ingredients[2].GetComponentInChildren<SpriteRenderer>().sprite;
+
                 }
                 else
                 {
@@ -170,9 +223,30 @@ public class RecipesScript : MonoBehaviour {
                     string r3 = recipeList[currentRecipe].ingredients[2].name;
 
                     //Checks if currentFallenRecipe == r1 r2 or r3. If true, Add to int
-                    if (currentFallenIngredient == r1 || currentFallenIngredient == r2 || currentFallenIngredient == r3)
+                    if ((currentFallenIngredient == r1 && currentr1 < maxCounter1) || (currentFallenIngredient == r2 && currentr1 < maxCounter1) || (currentFallenIngredient == r3 && currentr2 < maxCounter1))
                     {
                         recipeProgress++;
+                        if (currentFallenIngredient.Contains("Carrot"))
+                        {
+                            currentr1++;
+                        }
+                        else if (currentFallenIngredient.Contains("Celery"))
+                        {
+                            currentr2++;
+                        }
+                    }
+                    else
+                    {
+                        bouncerSpawn.lives--;
+                    }
+
+                    if (recipeProgress >= 3)
+                    {
+                        recipeProgress = 0;
+                        currentr1 = 0;
+                        currentr2 = 0;
+
+                        DecideNextRecipe();
                     }
                 }
                 break;
@@ -196,9 +270,31 @@ public class RecipesScript : MonoBehaviour {
                     string r3 = recipeList[currentRecipe].ingredients[2].name;
 
                     //Checks if currentFallenRecipe == r1 r2 or r3. If true, Add to int
-                    if (currentFallenIngredient == r1 || currentFallenIngredient == r2 || currentFallenIngredient == r3)
+                    if ((currentFallenIngredient == r1 && currentr1 < maxCounter1) || (currentFallenIngredient == r2 && currentr2 < maxCounter1) || (currentFallenIngredient == r3 && currentr3 < maxCounter1))
                     {
                         recipeProgress++;
+
+                        if (currentFallenIngredient.Contains("Beef"))
+                        {
+                            currentr1++;
+                        }
+                        else if (currentFallenIngredient.Contains("Carrot"))
+                        {
+                            currentr2++;
+                        }
+                        else if (currentFallenIngredient.Contains("Brown_Onion"))
+                        {
+                            currentr3++;
+                        }
+                    }
+
+                    if (recipeProgress >= 3)
+                    {
+                        recipeProgress = 0;
+                        currentr1 = 0;
+                        currentr2 = 0;
+
+                        DecideNextRecipe();
                     }
                 }
                 break;
@@ -222,9 +318,32 @@ public class RecipesScript : MonoBehaviour {
                     string r3 = recipeList[currentRecipe].ingredients[2].name;
 
                     //Checks if currentFallenRecipe == r1 r2 or r3. If true, Add to int
-                    if (currentFallenIngredient == r1 || currentFallenIngredient == r2 || currentFallenIngredient == r3)
+                    if ((currentFallenIngredient == r1 && currentr1 < maxCounter1) || (currentFallenIngredient == r2 && currentr2 < maxCounter1) || (currentFallenIngredient == r3 && currentr3 < maxCounter1))
                     {
                         recipeProgress++;
+
+                        if (currentFallenIngredient.Contains("Chilli"))
+                        {
+                            currentr1++;
+                        }
+                        else if (currentFallenIngredient.Contains("Mushroom"))
+                        {
+                            currentr2++;
+                        }
+                        else if (currentFallenIngredient.Contains("Potato"))
+                        {
+                            currentr3++;
+                        }
+                    }
+
+                    if (recipeProgress >= 3)
+                    {
+                        recipeProgress = 0;
+                        currentr1 = 0;
+                        currentr2 = 0;
+                        currentr3 = 0;
+
+                        DecideNextRecipe();
                     }
                 }
                 break;
@@ -247,9 +366,32 @@ public class RecipesScript : MonoBehaviour {
                     string r3 = recipeList[currentRecipe].ingredients[2].name;
 
                     //Checks if currentFallenRecipe == r1 r2 or r3. If true, Add to int
-                    if (currentFallenIngredient == r1 || currentFallenIngredient == r2 || currentFallenIngredient == r3)
+                    if ((currentFallenIngredient == r1 && currentr1 < maxCounter1) || (currentFallenIngredient == r2 && currentr2 < maxCounter1) || (currentFallenIngredient == r3 && currentr3 < maxCounter1))
                     {
                         recipeProgress++;
+
+                        if (currentFallenIngredient.Contains("Celery"))
+                        {
+                            currentr1++;
+                        }
+                        else if (currentFallenIngredient.Contains("Carrot"))
+                        {
+                            currentr2++;
+                        }
+                        else if (currentFallenIngredient.Contains("Capsicum"))
+                        {
+                            currentr3++;
+                        }
+                    }
+
+                    if (recipeProgress >= 3)
+                    {
+                        recipeProgress = 0;
+                        currentr1 = 0;
+                        currentr2 = 0;
+                        currentr3 = 0;
+
+                        DecideNextRecipe();
                     }
                 }
                 break;
