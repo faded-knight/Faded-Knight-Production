@@ -34,6 +34,7 @@ public class RecipesScript : MonoBehaviour {
 
     //Script References
     SpawnerScript bouncerSpawn;
+    ScoreUIScript scoreUI;
 
     //Private GameObject References
     private GameObject recipeUI;
@@ -138,12 +139,15 @@ public class RecipesScript : MonoBehaviour {
                     else
                     {
                         bouncerSpawn.lives--;
+                        scoreUI.SetScoreDisplay();
+                        
                     }
 
                     if (recipeProgress >= 3)
                     {
                         recipeProgress = 0;
                         currentr1 = 0;
+                        scoreUI.IncrementPlayerScore();
 
                         DecideNextRecipe();
                     }
@@ -189,6 +193,7 @@ public class RecipesScript : MonoBehaviour {
                     else
                     {
                         bouncerSpawn.lives--;
+                        scoreUI.SetScoreDisplay();
                     }
 
                     if (recipeProgress >= 3)
@@ -197,6 +202,7 @@ public class RecipesScript : MonoBehaviour {
                         currentr1 = 0;
                         currentr2 = 0;
                         currentr3 = 0;
+                        scoreUI.IncrementPlayerScore();
 
                         DecideNextRecipe();
                     }
@@ -238,6 +244,7 @@ public class RecipesScript : MonoBehaviour {
                     else
                     {
                         bouncerSpawn.lives--;
+                        scoreUI.SetScoreDisplay();
                     }
 
                     if (recipeProgress >= 3)
@@ -245,6 +252,7 @@ public class RecipesScript : MonoBehaviour {
                         recipeProgress = 0;
                         currentr1 = 0;
                         currentr2 = 0;
+                        scoreUI.IncrementPlayerScore();
 
                         DecideNextRecipe();
                     }
@@ -287,12 +295,18 @@ public class RecipesScript : MonoBehaviour {
                             currentr3++;
                         }
                     }
+                    else
+                    {
+                        bouncerSpawn.lives--;
+                        scoreUI.SetScoreDisplay();
+                    }
 
                     if (recipeProgress >= 3)
                     {
                         recipeProgress = 0;
                         currentr1 = 0;
                         currentr2 = 0;
+                        scoreUI.IncrementPlayerScore();
 
                         DecideNextRecipe();
                     }
@@ -335,6 +349,11 @@ public class RecipesScript : MonoBehaviour {
                             currentr3++;
                         }
                     }
+                    else
+                    {
+                        bouncerSpawn.lives--;
+                        scoreUI.SetScoreDisplay();
+                    }
 
                     if (recipeProgress >= 3)
                     {
@@ -342,6 +361,7 @@ public class RecipesScript : MonoBehaviour {
                         currentr1 = 0;
                         currentr2 = 0;
                         currentr3 = 0;
+                        scoreUI.IncrementPlayerScore();
 
                         DecideNextRecipe();
                     }
@@ -383,6 +403,11 @@ public class RecipesScript : MonoBehaviour {
                             currentr3++;
                         }
                     }
+                    else
+                    {
+                        bouncerSpawn.lives--;
+                        scoreUI.SetScoreDisplay();
+                    }
 
                     if (recipeProgress >= 3)
                     {
@@ -390,6 +415,7 @@ public class RecipesScript : MonoBehaviour {
                         currentr1 = 0;
                         currentr2 = 0;
                         currentr3 = 0;
+                        scoreUI.IncrementPlayerScore();
 
                         DecideNextRecipe();
                     }
