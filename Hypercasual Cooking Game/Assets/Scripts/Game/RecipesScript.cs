@@ -10,7 +10,7 @@ public class RecipesScript : MonoBehaviour {
     // Callum Stirrup-Prazak
     //
     //---------------------
-
+    
     //Recipe control System
     [Header("Recipe Creation List")]
 
@@ -140,7 +140,7 @@ public class RecipesScript : MonoBehaviour {
                     {
                         recipeProgress = 0;
                         currentr1 = 0;
-                        scoreUI.IncrementPlayerScore();
+                        scoreUI.IncrementPlayerScore(5);
                         recipeSelected = false;
 
                         DecideNextRecipe();
@@ -198,7 +198,7 @@ public class RecipesScript : MonoBehaviour {
                         currentr1 = 0;
                         currentr2 = 0;
                         currentr3 = 0;
-                        scoreUI.IncrementPlayerScore();
+                        scoreUI.IncrementPlayerScore(5);
                         recipeSelected = false;
 
                         DecideNextRecipe();
@@ -250,7 +250,7 @@ public class RecipesScript : MonoBehaviour {
                         recipeProgress = 0;
                         currentr1 = 0;
                         currentr2 = 0;
-                        scoreUI.IncrementPlayerScore();
+                        scoreUI.IncrementPlayerScore(5);
                         recipeSelected = false;
 
                         DecideNextRecipe();
@@ -307,7 +307,7 @@ public class RecipesScript : MonoBehaviour {
                         recipeProgress = 0;
                         currentr1 = 0;
                         currentr2 = 0;
-                        scoreUI.IncrementPlayerScore();
+                        scoreUI.IncrementPlayerScore(5);
                         recipeSelected = false;
 
                         DecideNextRecipe();
@@ -365,7 +365,7 @@ public class RecipesScript : MonoBehaviour {
                         currentr1 = 0;
                         currentr2 = 0;
                         currentr3 = 0;
-                        scoreUI.IncrementPlayerScore();
+                        scoreUI.IncrementPlayerScore(5);
                         recipeSelected = false;
 
                         DecideNextRecipe();
@@ -418,7 +418,7 @@ public class RecipesScript : MonoBehaviour {
 
                     if (recipeProgress == 3)
                     {
-                        scoreUI.IncrementPlayerScore();
+                        scoreUI.IncrementPlayerScore(5);
                         currentr1 = 0;
                         currentr2 = 0;
                         currentr3 = 0;

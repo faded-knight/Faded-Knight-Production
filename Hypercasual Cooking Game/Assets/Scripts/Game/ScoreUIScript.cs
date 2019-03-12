@@ -66,6 +66,13 @@ public class ScoreUIScript : MonoBehaviour {
         SetScoreDisplay();
     }
 
+    public void IncrementPlayerScore(int value)
+    {
+        playerCurrentScore += value;
+
+        SetScoreDisplay();
+    }
+
     public void ResetPlayerScore()
     {
         playerCurrentScore = 0;

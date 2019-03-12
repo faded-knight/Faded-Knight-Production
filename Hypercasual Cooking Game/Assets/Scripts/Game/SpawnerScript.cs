@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class SpawnerScript : MonoBehaviour
@@ -53,7 +54,8 @@ public class SpawnerScript : MonoBehaviour
     {
         recipeUI = GameObject.Find("RecipeUI");
 
-        DecideObject();
+        exitScript = GameObject.FindGameObjectWithTag("Exit").GetComponent<ExitScript>();
+        recipeScript = GameObject.FindObjectOfType<RecipesScript>();
     }
 
     //References Objects, sets currentSpawnTimer, sets gameTime
@@ -62,8 +64,8 @@ public class SpawnerScript : MonoBehaviour
         currentSpawnTimer = timeBetweenSpawns;
 
         //scoreScript = GameObject.FindGameObjectWithTag("UI").GetComponent<ScoreUIScript>();
-        exitScript = GameObject.FindGameObjectWithTag("Exit").GetComponent<ExitScript>();
-        recipeScript = GameObject.FindGameObjectWithTag("GameController").GetComponent<RecipesScript>();
+        
+        DecideObject();
 
         exitScript.currentSpawnedIngredients = 0;
 
@@ -71,7 +73,7 @@ public class SpawnerScript : MonoBehaviour
 
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
-        lives = maxLives; 
+        lives = maxLives;
 
     }
 
@@ -82,7 +84,7 @@ public class SpawnerScript : MonoBehaviour
         {
             Reset();
         }
-        
+
 
         currentSpawnTimer += Time.deltaTime;
 
@@ -137,10 +139,62 @@ public class SpawnerScript : MonoBehaviour
     //Decides next ingredient to Spawn
     void DecideObject()
     {
-        RandInt = Random.Range(0, ingredientsPrefab.Length);
-        GameObject obj = ingredientsPrefab[RandInt];
-        nextObject = ingredientsPrefab[RandInt];
-        NextIngredient();
+        //create an array of all the gameobjects in current recipe
+        GameObject[] recipeItems = recipeScript.recipeList[recipeScript.currentRecipe].ingredients;
+
+        //get a random integer from 1 to 100
+        int randomInt = Random.Range(0, 101);
+
+        //if you get a number that is greater than or equal to an arbitrary number ---- The 50 can be changed to whatever you want
+        if (randomInt >= 50)
+        {
+            //create an empty list of gameobjects 
+            List<GameObject> items = new List<GameObject>();
+            //clear it because why not?
+            items.Clear();
+
+            //for each gameobject in ingredients prefabs
+            foreach (GameObject go in ingredientsPrefab)
+            {
+                //for each in recipe items
+                foreach (GameObject go2 in recipeItems)
+                {
+                    //if they equal each other, 
+                    if (go == go2)
+                    {
+                        //if it isn't currently in the list
+                        if (!items.Contains(go))
+                        {
+                            // add it to the list
+                            items.Add(go);
+                        }
+                    }
+                }
+            }
+
+            //get a random item from the list
+            nextObject = items[Random.Range(0, items.Count)];
+
+            //set the randint int to the int of the iterator in ingredients prefab
+            for(int i = 0; i < ingredientsPrefab.Length; i++)
+            {
+                if(ingredientsPrefab[i] == nextObject)
+                {
+                    RandInt = i;
+                }
+            }
+
+            //call next ingredient
+            NextIngredient();
+        }
+        else
+        {
+            RandInt = Random.Range(0, ingredientsPrefab.Length);
+            GameObject obj = ingredientsPrefab[RandInt];
+            nextObject = ingredientsPrefab[RandInt];
+            NextIngredient();
+        }
+
     }
 
     void NextIngredient()
