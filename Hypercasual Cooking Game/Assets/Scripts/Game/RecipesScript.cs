@@ -68,6 +68,7 @@ public class RecipesScript : MonoBehaviour {
     {
         recipeUI = GameObject.Find("RecipeUI");
         bouncerSpawn = GameObject.FindGameObjectWithTag("GameController").GetComponent<SpawnerScript>();
+        scoreUI = GameObject.Find("GameUI").GetComponent<ScoreUIScript>();
         recipeComplete = false;
         currentRecipe = -1;
         DecideNextRecipe();
