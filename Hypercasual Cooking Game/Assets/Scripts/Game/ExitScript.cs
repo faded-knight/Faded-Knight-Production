@@ -92,7 +92,7 @@ public class ExitScript : MonoBehaviour {
 
     void SaveSheep(GameObject sheep)
     {
-        scoreUI.IncrementPlayerScore();
+
         Destroy(sheep);
         currentSpawnedIngredients--;
     }

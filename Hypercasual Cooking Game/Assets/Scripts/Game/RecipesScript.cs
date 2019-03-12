@@ -80,19 +80,8 @@ public class RecipesScript : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (recipeComplete)
-        {
-            RecipeComplete();
-        }
-    }
+        Debug.Log("Current Recipe Progress:" + recipeProgress);
 
-    //Updates the Score System based on the recipe which is completed
-    public void RecipeComplete()
-    {
-        recipeComplete = false;
-
-
-        DecideNextRecipe();
     }
 
     //Loads in the next Recipe in the game
@@ -120,6 +109,8 @@ public class RecipesScript : MonoBehaviour {
                     ingredient1.sprite = recipeList[currentRecipe].ingredients[0].GetComponentInChildren<SpriteRenderer>().sprite;
                     ingredient2.sprite = recipeList[currentRecipe].ingredients[1].GetComponentInChildren<SpriteRenderer>().sprite;
                     ingredient3.sprite = recipeList[currentRecipe].ingredients[2].GetComponentInChildren<SpriteRenderer>().sprite;
+
+                    recipeSelected = true;
                 }
                 else
                 {
@@ -132,6 +123,7 @@ public class RecipesScript : MonoBehaviour {
                     if ((currentFallenIngredient == r1 && currentr1 < maxCounter3) || (currentFallenIngredient == r2 && currentr1 < maxCounter3) || (currentFallenIngredient == r3 && currentr1 < maxCounter3))
                     {
                         recipeProgress++;
+
                         if (currentFallenIngredient.Contains("Tomato"))
                         {
                             currentr1++;
@@ -144,11 +136,12 @@ public class RecipesScript : MonoBehaviour {
                         
                     }
 
-                    if (recipeProgress >= 3)
+                    if (recipeProgress == 3)
                     {
                         recipeProgress = 0;
                         currentr1 = 0;
                         scoreUI.IncrementPlayerScore();
+                        recipeSelected = false;
 
                         DecideNextRecipe();
                     }
@@ -165,6 +158,8 @@ public class RecipesScript : MonoBehaviour {
                     ingredient1.sprite = recipeList[currentRecipe].ingredients[0].GetComponentInChildren<SpriteRenderer>().sprite;
                     ingredient2.sprite = recipeList[currentRecipe].ingredients[1].GetComponentInChildren<SpriteRenderer>().sprite;
                     ingredient3.sprite = recipeList[currentRecipe].ingredients[2].GetComponentInChildren<SpriteRenderer>().sprite;
+
+                    recipeSelected = true;
                 }
                 else
                 {
@@ -197,13 +192,14 @@ public class RecipesScript : MonoBehaviour {
                         scoreUI.SetScoreDisplay();
                     }
 
-                    if (recipeProgress >= 3)
+                    if (recipeProgress == 3)
                     {
                         recipeProgress = 0;
                         currentr1 = 0;
                         currentr2 = 0;
                         currentr3 = 0;
                         scoreUI.IncrementPlayerScore();
+                        recipeSelected = false;
 
                         DecideNextRecipe();
                     }
@@ -221,6 +217,7 @@ public class RecipesScript : MonoBehaviour {
                     ingredient2.sprite = recipeList[currentRecipe].ingredients[1].GetComponentInChildren<SpriteRenderer>().sprite;
                     ingredient3.sprite = recipeList[currentRecipe].ingredients[2].GetComponentInChildren<SpriteRenderer>().sprite;
 
+                    recipeSelected = true;
                 }
                 else
                 {
@@ -248,12 +245,13 @@ public class RecipesScript : MonoBehaviour {
                         scoreUI.SetScoreDisplay();
                     }
 
-                    if (recipeProgress >= 3)
+                    if (recipeProgress == 3)
                     {
                         recipeProgress = 0;
                         currentr1 = 0;
                         currentr2 = 0;
                         scoreUI.IncrementPlayerScore();
+                        recipeSelected = false;
 
                         DecideNextRecipe();
                     }
@@ -270,6 +268,8 @@ public class RecipesScript : MonoBehaviour {
                     ingredient1.sprite = recipeList[currentRecipe].ingredients[0].GetComponentInChildren<SpriteRenderer>().sprite;
                     ingredient2.sprite = recipeList[currentRecipe].ingredients[1].GetComponentInChildren<SpriteRenderer>().sprite;
                     ingredient3.sprite = recipeList[currentRecipe].ingredients[2].GetComponentInChildren<SpriteRenderer>().sprite;
+
+                    recipeSelected = true;
                 }
                 else
                 {
@@ -302,12 +302,13 @@ public class RecipesScript : MonoBehaviour {
                         scoreUI.SetScoreDisplay();
                     }
 
-                    if (recipeProgress >= 3)
+                    if (recipeProgress == 3)
                     {
                         recipeProgress = 0;
                         currentr1 = 0;
                         currentr2 = 0;
                         scoreUI.IncrementPlayerScore();
+                        recipeSelected = false;
 
                         DecideNextRecipe();
                     }
@@ -324,6 +325,8 @@ public class RecipesScript : MonoBehaviour {
                     ingredient1.sprite = recipeList[currentRecipe].ingredients[0].GetComponentInChildren<SpriteRenderer>().sprite;
                     ingredient2.sprite = recipeList[currentRecipe].ingredients[1].GetComponentInChildren<SpriteRenderer>().sprite;
                     ingredient3.sprite = recipeList[currentRecipe].ingredients[2].GetComponentInChildren<SpriteRenderer>().sprite;
+
+                    recipeSelected = true;
                 }
                 else
                 {
@@ -356,13 +359,14 @@ public class RecipesScript : MonoBehaviour {
                         scoreUI.SetScoreDisplay();
                     }
 
-                    if (recipeProgress >= 3)
+                    if (recipeProgress == 3)
                     {
                         recipeProgress = 0;
                         currentr1 = 0;
                         currentr2 = 0;
                         currentr3 = 0;
                         scoreUI.IncrementPlayerScore();
+                        recipeSelected = false;
 
                         DecideNextRecipe();
                     }
@@ -378,6 +382,8 @@ public class RecipesScript : MonoBehaviour {
                     ingredient1.sprite = recipeList[currentRecipe].ingredients[0].GetComponentInChildren<SpriteRenderer>().sprite;
                     ingredient2.sprite = recipeList[currentRecipe].ingredients[1].GetComponentInChildren<SpriteRenderer>().sprite;
                     ingredient3.sprite = recipeList[currentRecipe].ingredients[2].GetComponentInChildren<SpriteRenderer>().sprite;
+
+                    recipeSelected = true;
                 }
                 else
                 {
@@ -410,13 +416,14 @@ public class RecipesScript : MonoBehaviour {
                         scoreUI.SetScoreDisplay();
                     }
 
-                    if (recipeProgress >= 3)
+                    if (recipeProgress == 3)
                     {
-                        recipeProgress = 0;
+                        scoreUI.IncrementPlayerScore();
                         currentr1 = 0;
                         currentr2 = 0;
                         currentr3 = 0;
-                        scoreUI.IncrementPlayerScore();
+                        recipeProgress = 0;
+                        recipeSelected = false;
 
                         DecideNextRecipe();
                     }
