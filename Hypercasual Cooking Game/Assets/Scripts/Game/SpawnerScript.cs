@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SpawnerScript : MonoBehaviour
 {
@@ -49,6 +50,8 @@ public class SpawnerScript : MonoBehaviour
     private int droppedBalls = 0;
     private int RandInt;
 
+    public string endGameSceneName;
+
     //Decides the first object to spawn in the game
     private void Awake()
     {
@@ -82,7 +85,9 @@ public class SpawnerScript : MonoBehaviour
 
         if (lives <= 0)
         {
-            Reset();
+            //Reset();
+            //do scenemanager stuff
+            SceneManager.LoadScene(endGameSceneName);
         }
 
 
