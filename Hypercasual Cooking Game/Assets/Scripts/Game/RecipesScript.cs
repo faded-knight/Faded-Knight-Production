@@ -96,6 +96,10 @@ public class RecipesScript : MonoBehaviour {
         int currentr2 = 0;
         int currentr3 = 0;
 
+        bool tick1 = ingredient1.GetComponentInChildren<Image>().enabled = true;
+        bool tick2 = ingredient2.GetComponentInChildren<Image>().enabled = true;
+        bool tick3 = ingredient3.GetComponentInChildren<Image>().enabled = true;
+
         //Used to load the determined recipe into the game.
         switch (nextRecipe)
         {
@@ -114,6 +118,8 @@ public class RecipesScript : MonoBehaviour {
                 }
                 else
                 {
+                    
+
                     //Simplification of referencing recipe items
                     string r1 = recipeList[currentRecipe].ingredients[0].name;
                     string r2 = recipeList[currentRecipe].ingredients[1].name;
@@ -128,6 +134,23 @@ public class RecipesScript : MonoBehaviour {
                         {
                             currentr1++;
                         }
+
+                        if (recipeProgress == 1)
+                        {
+                            tick1 = true;
+                        }
+
+                        if (recipeProgress == 2)
+                        {
+                            tick2 = true;
+                        }
+
+                        if (recipeProgress == 3)
+                        {
+                            tick3 = true;
+                        }
+                        
+
                     }
                     else
                     {
@@ -138,6 +161,10 @@ public class RecipesScript : MonoBehaviour {
 
                     if (recipeProgress == 3)
                     {
+                        tick1 = false;
+                        tick2 = false;
+                        tick3 = false;   
+
                         recipeProgress = 0;
                         currentr1 = 0;
                         scoreUI.IncrementPlayerScore(5);
@@ -176,14 +203,20 @@ public class RecipesScript : MonoBehaviour {
                         if (currentFallenIngredient.Contains("Carrot"))
                         {
                             currentr1++;
+
+                            tick1 = true;
                         }
                         else if (currentFallenIngredient.Contains("Tofu"))
                         {
                             currentr2++;
+
+                            tick2 = true;
                         }
                         else if (currentFallenIngredient.Contains("Celery"))
                         {
                             currentr3++;
+
+                            tick3 = true;
                         }
                     }
                     else
@@ -194,6 +227,10 @@ public class RecipesScript : MonoBehaviour {
 
                     if (recipeProgress == 3)
                     {
+                        tick1 = false;
+                        tick2 = false;
+                        tick3 = false;
+
                         recipeProgress = 0;
                         currentr1 = 0;
                         currentr2 = 0;
@@ -233,10 +270,22 @@ public class RecipesScript : MonoBehaviour {
                         if (currentFallenIngredient.Contains("Carrot"))
                         {
                             currentr1++;
+
+                            if (currentr1 == 1)
+                            {
+                                tick1 = true;
+                            }
+
+                            if (currentr2 == 2)
+                            {
+                                tick2 = true;
+                            }
                         }
                         else if (currentFallenIngredient.Contains("Celery"))
                         {
                             currentr2++;
+
+                            tick3 = true;
                         }
                     }
                     else
@@ -247,6 +296,10 @@ public class RecipesScript : MonoBehaviour {
 
                     if (recipeProgress == 3)
                     {
+                        tick1 = false;
+                        tick2 = false;
+                        tick3 = false;
+
                         recipeProgress = 0;
                         currentr1 = 0;
                         currentr2 = 0;
@@ -286,14 +339,20 @@ public class RecipesScript : MonoBehaviour {
                         if (currentFallenIngredient.Contains("Beef"))
                         {
                             currentr1++;
+
+                            tick1 = true;
                         }
                         else if (currentFallenIngredient.Contains("Carrot"))
                         {
                             currentr2++;
+
+                            tick2 = true;
                         }
                         else if (currentFallenIngredient.Contains("Brown_Onion"))
                         {
                             currentr3++;
+
+                            tick3 = true;
                         }
                     }
                     else
@@ -304,6 +363,10 @@ public class RecipesScript : MonoBehaviour {
 
                     if (recipeProgress == 3)
                     {
+                        tick1 = false;
+                        tick2 = false;
+                        tick3 = false;
+
                         recipeProgress = 0;
                         currentr1 = 0;
                         currentr2 = 0;
@@ -343,14 +406,20 @@ public class RecipesScript : MonoBehaviour {
                         if (currentFallenIngredient.Contains("Chilli"))
                         {
                             currentr1++;
+
+                            tick1 = true;
                         }
                         else if (currentFallenIngredient.Contains("Mushroom"))
                         {
                             currentr2++;
+
+                            tick2 = true;
                         }
                         else if (currentFallenIngredient.Contains("Potato"))
                         {
                             currentr3++;
+
+                            tick3 = true;
                         }
                     }
                     else
@@ -361,6 +430,10 @@ public class RecipesScript : MonoBehaviour {
 
                     if (recipeProgress == 3)
                     {
+                        tick1 = false;
+                        tick2 = false;
+                        tick3 = false;
+
                         recipeProgress = 0;
                         currentr1 = 0;
                         currentr2 = 0;
@@ -400,14 +473,20 @@ public class RecipesScript : MonoBehaviour {
                         if (currentFallenIngredient.Contains("Celery"))
                         {
                             currentr1++;
+
+                            tick1 = true;
                         }
                         else if (currentFallenIngredient.Contains("Carrot"))
                         {
                             currentr2++;
+
+                            tick2 = true;
                         }
                         else if (currentFallenIngredient.Contains("Capsicum"))
                         {
                             currentr3++;
+
+                            tick3 = true;
                         }
                     }
                     else
@@ -418,6 +497,10 @@ public class RecipesScript : MonoBehaviour {
 
                     if (recipeProgress == 3)
                     {
+                        tick1 = false;
+                        tick2 = false;
+                        tick3 = false;
+
                         scoreUI.IncrementPlayerScore(5);
                         currentr1 = 0;
                         currentr2 = 0;
